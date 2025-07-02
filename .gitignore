@@ -1,2 +1,6 @@
-*.mp4 
-node_modules/ 
+# Ignore build and system files
+.next
+node_modules
+.env
+.DS_Store
+*.log
