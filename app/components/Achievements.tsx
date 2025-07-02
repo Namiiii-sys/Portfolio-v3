@@ -51,7 +51,6 @@ export default function Certifications() {
       </h1>
 
       <div ref={containerRef} className="relative max-w-6xl mx-auto">
-        {/* Vertical timeline line */}
         <div className="absolute left-1/2 top-0 h-full w-0.5 bg-gray-800 -translate-x-1/2">
           <motion.div
             className="absolute top-0 left-0 w-full bg-gradient-to-b from-purple-500 to-blue-500"
@@ -93,7 +92,8 @@ function TimelineCard({ cert, isLeft, index }) {
       <div
         className={`w-full md:w-1/2 ${isLeft ? "md:pr-16" : "md:pl-16"}`}
       >
-        <div className="p-6 flex justify-between items-center gap-10 rounded-xl border border-gray-800 bg-gradient-to-br from-gray-900 to-gray-950">
+      <div className="p-6 flex justify-between items-center gap-10 rounded-xl bg-white/10 backdrop-blur-lg border-1 border-purple-950 backdrop-saturate-150 shadow-xl">
+
          <div>
           <h3 className="text-xl font-bold mb-1">{cert.title}</h3>
           <p className="text-purple-400 mb-3">{cert.issuer} · {cert.date}</p>

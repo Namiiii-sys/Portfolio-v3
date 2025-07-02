@@ -6,8 +6,7 @@ import Achievements from './components/Achievements'
 const page = () => {
   return (
     <div>
-      {/* <Navbar /> */}
-      {/* <ProjectSection /> */}
+      <ProjectSection />
       <Achievements/>
     </div>
   )
