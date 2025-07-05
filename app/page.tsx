@@ -1,8 +1,9 @@
 import React from 'react'
 // import ProjectSection from './components/projects'
 // import Achievements from './components/Achievements'
-import About from './components/About'
+import About1 from './components/About1'
 // import Contact from './components/Contact'
+import About from './components/About'
 
 const page = () => {
   return (
@@ -10,6 +11,7 @@ const page = () => {
       {/* <ProjectSection />
       <Achievements/> */}
       {/* <Contact/> */}
+      <About1/>
       <About/>
     </div>
   )

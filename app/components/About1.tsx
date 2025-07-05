@@ -4,24 +4,24 @@ import { motion } from 'framer-motion';
 import Image from 'next/image';
 import icon3 from '@/public/icon3.webp';
 import illust from '@/public/illust.png';
-import { FaReact, FaNodeJs, FaCss3Alt, FaGitAlt } from 'react-icons/fa';
-import { SiTypescript, SiNextdotjs, SiTailwindcss, SiJavascript, SiHtml5 , SiPython, SiCplusplus } from 'react-icons/si';
+import { FaReact, FaNodeJs, FaCss3Alt, FaGitAlt} from 'react-icons/fa';
+import { SiTypescript, SiNextdotjs, SiTailwindcss, SiJavascript, SiHtml5, SiPython, SiCplusplus } from 'react-icons/si';
 
 const About = () => {
   const techStackIcons = [
-    { icon: FaReact, name: 'React' },
-    { icon: SiTypescript, name: 'TypeScript' },
-    { icon: SiPython, name: 'Python', color: '#3776AB' },
-    { icon: FaGitAlt, name: 'Git' },
-    { icon: SiCplusplus, name: 'C++'},
-    { icon: SiNextdotjs, name: 'Next.js' },
-    { icon: FaCss3Alt, name: 'CSS3' },
-    { icon: SiJavascript, name: 'JavaScript' },
-    { icon: SiTailwindcss, name: 'Tailwind CSS' },
-    { icon: FaNodeJs, name: 'Node.js' },
+    { icon: FaReact, name: 'React', color: '#61DAFB' },
+    { icon: SiTypescript, name: 'TypeScript', color: '#3178C6' },
+    { icon: SiNextdotjs, name: 'Next.js', color: '#000000' },
+    { icon: SiTailwindcss, name: 'Tailwind CSS', color: '#06B6D4' },
+    { icon: FaNodeJs, name: 'Node.js', color: '#339933' },
+    { icon: SiJavascript, name: 'JavaScript', color: '#F7DF1E' },
+    { icon: FaCss3Alt, name: 'CSS3', color: '#1572B6' },
+    { icon: FaGitAlt, name: 'Git', color: '#F05032' },
     { icon: SiHtml5, name: 'HTML5', color: '#E34F26' },
+    { icon: SiPython, name: 'Python', color: '#3776AB' },
+    { icon: SiCplusplus, name: 'C++', color: '#00599C' },
   ];
-  
+
   return (
     <section className="min-h-screen flex items-center justify-center px-4 md:px-15 bg-gradient-to-br from-[#0f172a] to-[#1e293b] sm:py-15 sm:px-20 sm:flex-row">
       <div className="w-full sm:py-10 md:max-w-4xl mx-auto">
@@ -75,7 +75,7 @@ const About = () => {
                       </h1>
                     </div>
                     <p className='text-sm text-gray-300 mt-2 line-clamp-3'>
-                      Passionate full stack developer creating responsive web experiences with modern technologies. 
+                      Passionate frontend developer creating responsive web experiences with modern technologies. 
                       Specializing in React and UI/UX design.
                     </p>
                   </div>
@@ -155,10 +155,11 @@ const About = () => {
                           top: `calc(50% + ${y}px)`,
                           transform: 'translate(-50%, -50%)',
                         }}
-                       
+                        
                       >
                         <tech.icon 
-                          className="text-white text-2xl transition-all duration-300 hover:text-indigo-400" 
+                          className="text-2xl transition-all duration-300" 
+                          style={{ color: tech.color }}
                         />
                       </motion.div>
                     );
@@ -167,8 +168,7 @@ const About = () => {
               </div>
               
               <p className="text-gray-300 text-center text-sm px-4">
-                {`I specialize in modern web technologies including React, Next.js, and Tailwind CSS.
-                Each icon represents a technology I'm proficient with.`}
+                {`I specialize in modern web technologies including React, Next.js, and Tailwind CSS Each icon represents a technology I'm proficient with.`}
               </p>
             </div>
           </motion.div>
