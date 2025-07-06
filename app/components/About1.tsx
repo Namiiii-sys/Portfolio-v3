@@ -119,7 +119,7 @@ const About = () => {
             transition={{ duration: 0.5, delay: 0.5 }}
           >
             <div className='p-6 h-full flex flex-col items-center justify-center'>
-              <h1 className='text-white font-semibold text-2xl mb-6'>TECH STACK</h1>
+              <h1 className='text-white font-semibold text-2xl mb-6'>TECH <span className='text-indigo-500'>STACK</span></h1>
               
               <div className="relative h-64 w-64 mb-5">
                 <div className="absolute inset-0 flex items-center justify-center">
