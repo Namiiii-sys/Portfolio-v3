@@ -81,7 +81,7 @@ const ProjectSection: React.FC = () => {
   }, []);
 
   return (
-    <section className="py-20 px-6 md:px-12 bg-transparent border border-indigo-900 text-white">
+    <section className="py-20 mt-10 px-6 md:px-12 bg-transparent border border-indigo-900 text-white">
       <h1 className="text-4xl font-bold mb-20 text-center bg-gradient-to-r from-blue-500 to-purple-600 bg-clip-text text-transparent">
         MY PROJECTS
       </h1>

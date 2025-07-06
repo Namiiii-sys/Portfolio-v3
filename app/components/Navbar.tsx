@@ -15,9 +15,9 @@ const Navbar = () => {
   ];
 
   return (
-    <nav className="w-full z-100 fixed top-0 left-0 text-white shadow-lg bg-transparent">
+    <nav className="w-full z-100 fixed top-0 left-0 text-white shadow-lg bg-transparent mb-20">
       {/* Desktop Navbar */}
-      <div className="hidden md:flex fixed top-0 left-0 w-full bg-gradient-to-b from-[#0f0f0f] to-[#0b0918] text-white py-4 px-12 shadow-lg justify-between items-center">
+      <div className="hidden md:flex fixed top-0 left-0 w-full bg-gradient-to-b from-[#0f0f0f] to-[#120b3c] text-white py-4 px-12 shadow-lg justify-between items-center">
         <div className="text-lg font-bold flex items-center space-x-2">
           <Image
               src={namita}
