@@ -28,3 +28,18 @@ body {
 .nav-link::after {
   content: "";
 }
+
+@layer components{
+  .card{
+    position: absolute;
+    height: 60%;
+    width: 80%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: rgba(63, 26, 225, 0.783);
+    padding: 4px;
+    border-radius: 30px ;
+    
+  }
+}
