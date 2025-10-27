@@ -1,11 +1,33 @@
 "use client";
-import React, { useState } from "react";
+import React, { useLayoutEffect, useState } from "react";
 import { FiMenu, FiX, FiGithub, FiLinkedin } from "react-icons/fi";
 import Image from "next/image";
 import namita from "@/public/Namita.jpg";
+import { gsap } from "gsap";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
+
+  useLayoutEffect(() => {
+    const ctx = gsap.context(() => {
+      const tl = gsap.timeline();
+tl.from(".navbar-item", {
+  y: -20,
+  opacity: 0,
+  duration: 0.8,
+  stagger: 0.35,
+  ease: "power2.out",
+})
+.from(".nav-link", {
+  y: -10,
+  opacity: 0,
+  duration: 0.4,
+  stagger: 0.35,
+  ease: "power2.out",
+},"-=1.5");
+    });
+    return () => ctx.revert();
+  }, []);
 
   const links = [
     { name: "Home", href: "#" },
@@ -17,8 +39,8 @@ const Navbar = () => {
   return (
     <nav className="w-full z-100 fixed top-0 left-0 text-white shadow-lg bg-transparent mb-20">
       {/* Desktop Navbar */}
-      <div className="hidden md:flex fixed top-0 left-0 w-full bg-gradient-to-b from-[#0f0f0f] to-[#120b3c] text-white py-4 px-12 shadow-lg justify-between items-center">
-        <div className="text-lg font-bold flex items-center space-x-2">
+      <div className="navbar-item hidden md:flex fixed top-0 left-0 w-full bg-transparent text-white py-4 px-12 shadow-lg justify-between items-center">
+        <div className="navbar-item text-lg font-bold flex items-center space-x-2">
           <Image
               src={namita}
               alt="Namita Mehra"
@@ -29,7 +51,7 @@ const Navbar = () => {
             /> <span className="text-white">|| Web Developer</span>
         </div>
 
-        <div className="flex items-center space-x-6 font-semibold">
+        <div className="navbar-item flex bg-gradient-to-br rounded-full px-6 from-indigo-900/30 to-[#120b3c] backdrop-blur-xl border border-indigo-700/50 items-center space-x-6 font-semibold">
           {links.map((link) => (
             <a
               key={link.name}
@@ -41,7 +63,7 @@ const Navbar = () => {
           ))}
         </div>
 
-        <div className="flex gap-2">
+        <div className="navbar-item flex gap-2">
           <a
             href="https://www.linkedin.com/in/namita-mh"
             target="_blank"
@@ -66,7 +88,7 @@ const Navbar = () => {
       </div>
 
       {/* Mobile Menu Toggle */}
-      <div className="md:hidden py-4 px-6 flex justify-end fixed top-0 left-0 w-full bg-[#0f0f0f] shadow-lg z-10">
+      <div className="navbar-container md:hidden py-4 px-6 flex justify-end fixed top-0 left-0 w-full bg-[#0f0f0f] shadow-lg z-10">
         <button onClick={() => setIsOpen(!isOpen)}>
           {isOpen ? (
             <FiX size={24} className="text-white" />

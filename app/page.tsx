@@ -1,21 +1,22 @@
 import React from 'react'
-// import ProjectSection from './components/projects'
-// import Achievements from './components/Achievements'
-// import Navbar from './components/Navbar'
-// import About1 from './components/About1'
-// // import Contact from './components/Contact'
+import Achievements from './components/Achievements'
+import Navbar from './components/Navbar'
+// import Contact from './components/Contact'
 import About from './components/About'
-import ProjectSection from './components/Project1'
+import ProjectsPage from './components/Project1'
+// import Project from './components/projects'
 
 const page = () => {
   return (
     <div>
-      {/* <Navbar/>
-      <ProjectSection />
+      <Navbar/>
+      <About/>  
+      <ProjectsPage/>
+      {/* <Project/> */}
       <Achievements/> 
-      {/* <Contact/>  */}
-      <ProjectSection/>
-      <About/> 
+      {/* <Contact/> */}
+      
+      
     </div>
   )
 }

@@ -54,7 +54,7 @@ export default function Certifications() {
   const lineHeight = useTransform(scrollYProgress, [0, 1], ["0%", "100%"]);
 
   return (
-    <section className="py-20 px-6 md:px-12 bg-[#0f0f0f] text-white">
+    <section className="py-20 px-6 md:px-12 text-white">
       <h1 className="text-4xl font-bold mb-20 text-center bg-gradient-to-r from-purple-400 to-blue-500 bg-clip-text text-transparent">
         My Certifications
       </h1>

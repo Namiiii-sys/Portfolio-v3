@@ -23,7 +23,7 @@ const About = () => {
   ];
   
   return (
-    <section className="min-h-screen flex items-center justify-center px-4 md:px-15 bg-gradient-to-br from-[#0f172a] to-[#1e293b] sm:py-15 sm:px-20 sm:flex-row">
+    <section className="min-h-screen flex items-center justify-center px-4 md:px-15 sm:py-15 sm:px-20 sm:flex-row">
       <div className="w-full sm:py-10 md:max-w-4xl mx-auto">
         <div className="flex flex-col md:flex-row md:gap-3 items-stretch">
 
