@@ -11,29 +11,29 @@ const Navbar = () => {
   useLayoutEffect(() => {
     const ctx = gsap.context(() => {
       const tl = gsap.timeline();
-tl.from(".navbar-item", {
-  y: -20,
-  opacity: 0,
-  duration: 0.8,
-  stagger: 0.35,
-  ease: "power2.out",
-})
-.from(".nav-link", {
-  y: -10,
-  opacity: 0,
-  duration: 0.4,
-  stagger: 0.35,
-  ease: "power2.out",
-},"-=1.5");
+      tl.from(".navbar-item", {
+        y: -20,
+        opacity: 0,
+        duration: 0.8,
+        stagger: 0.35,
+        ease: "power2.out",
+      })
+        .from(".nav-link", {
+          y: -10,
+          opacity: 0,
+          duration: 0.4,
+          stagger: 0.35,
+          ease: "power2.out",
+        }, "-=1.5");
     });
     return () => ctx.revert();
   }, []);
 
   const links = [
-    { name: "Home", href: "#" },
-    { name: "About", href: "#about" },
-    { name: "Projects", href: "#projects" },
-    { name: "Contact", href: "#contact" },
+    { name: "Home", href: "/" },
+    { name: "About", href: "/#about" },
+    { name: "Projects", href: "/projects" },
+    { name: "Contact", href: "/#socials" },
   ];
 
   return (
@@ -42,13 +42,13 @@ tl.from(".navbar-item", {
       <div className="navbar-item hidden md:flex fixed top-0 left-0 w-full bg-transparent text-white py-4 px-12 shadow-lg justify-between items-center">
         <div className="navbar-item text-lg font-bold flex items-center space-x-2">
           <Image
-              src={namita}
-              alt="Namita Mehra"
-              width={40}
-              height={40}
-              className="w-[40px] h-[40px] rounded-full border border-white mb-2 object-cover mt-2"
-              priority
-            /> <span className="text-white">|| Web Developer</span>
+            src={namita}
+            alt="Namita Mehra"
+            width={40}
+            height={40}
+            className="w-[40px] h-[40px] rounded-full border border-white mb-2 object-cover mt-2"
+            priority
+          /> <span className="text-white">|| Web Developer</span>
         </div>
 
         <div className="navbar-item flex bg-gradient-to-br rounded-full px-6 from-indigo-900/30 to-[#120b3c] backdrop-blur-xl border border-indigo-700/50 items-center space-x-6 font-semibold">

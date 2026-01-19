@@ -1,0 +1,124 @@
+"use client";
+import React from "react";
+import { motion } from "framer-motion";
+import { FiExternalLink, FiGithub } from "react-icons/fi";
+
+const projects = [
+    {
+        title: "RentoAI",
+        description: "AI-Powered Rental Platform leveraging recommendation systems.",
+        tech: ["Next.js", "Tailwind", "Clerk"],
+        link: "#",
+        github: "#",
+        image: "/project-rento.png", // Placeholder
+        color: "from-blue-400 to-cyan-300",
+    },
+    {
+        title: "Swiftpass",
+        description: "QR-based check-in solution for event organizers.",
+        tech: ["React", "Firebase", "QRCode"],
+        link: "#",
+        github: "#",
+        image: "/project-swiftpass.png", // Placeholder
+        color: "from-purple-400 to-pink-300",
+    },
+    {
+        title: "Quickfix",
+        description: "Local Service Finder connecting users with professionals.",
+        tech: ["MongoDB", "Express", "Next.js"],
+        link: "#",
+        github: "#",
+        image: "/project-quickfix.png", // Placeholder
+        color: "from-green-400 to-emerald-300",
+    },
+    {
+        title: "QuirkyCart",
+        description: "E-commerce platform with Django backend.",
+        tech: ["Django", "PostgreSQL", "Bootstrap"],
+        link: "#",
+        github: "#",
+        image: "/project-quirky.png", // Placeholder
+        color: "from-orange-400 to-red-300",
+    },
+];
+
+const FloatingProjects = () => {
+    return (
+        <div className="min-h-screen py-20 px-6 relative z-10">
+            <h1 className="text-5xl font-bold text-center mb-20 bg-clip-text text-transparent bg-gradient-to-r from-blue-200 via-purple-200 to-pink-200">
+                Selected Works
+            </h1>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-12 max-w-6xl mx-auto">
+                {projects.map((project, index) => (
+                    <FloatingCard key={index} project={project} index={index} />
+                ))}
+            </div>
+        </div>
+    );
+};
+
+interface Project {
+    title: string;
+    description: string;
+    tech: string[];
+    link: string;
+    github: string;
+    color: string;
+}
+
+const FloatingCard = ({ project, index }: { project: Project; index: number }) => {
+    return (
+        <motion.div
+            initial={{ opacity: 0, y: 50 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            animate={{
+                y: [0, -10, 0],
+            }}
+            transition={{
+                duration: 0.5,
+                delay: index * 0.1,
+                y: {
+                    duration: 3 + Math.random() * 2,
+                    repeat: Infinity,
+                    repeatType: "reverse",
+                    ease: "easeInOut",
+                    delay: Math.random() * 2,
+                }
+            }}
+            className="group relative rounded-3xl bg-white/5 border border-white/10 overflow-hidden hover:border-white/20 transition-colors"
+        >
+            {/* Abstract Background Gradient */}
+            <div className={`absolute inset-0 opacity-10 bg-gradient-to-br ${project.color} blur-3xl group-hover:opacity-20 transition-opacity duration-500`} />
+
+            <div className="p-8 relative z-10 h-full flex flex-col">
+                <div className="mb-6 flex justify-between items-start">
+                    <h3 className="text-2xl font-bold text-white mb-2">{project.title}</h3>
+                    <div className="flex gap-4">
+                        <a href={project.github} className="text-gray-400 hover:text-white transition-colors"><FiGithub size={20} /></a>
+                        <a href={project.link} className="text-gray-400 hover:text-white transition-colors"><FiExternalLink size={20} /></a>
+                    </div>
+                </div>
+
+                <p className="text-gray-400 mb-6 flex-grow">{project.description}</p>
+
+                <div className="flex flex-wrap gap-2 mb-6">
+                    {project.tech.map((t: string) => (
+                        <span key={t} className="px-3 py-1 text-xs rounded-full bg-white/10 text-gray-300 border border-white/5">
+                            {t}
+                        </span>
+                    ))}
+                </div>
+
+                {/* Placeholder for Image/Video Area */}
+                <div className="w-full h-48 bg-black/20 rounded-xl border border-white/5 overflow-hidden relative">
+                    <div className="absolute inset-0 flex items-center justify-center text-gray-600 text-sm">
+                        Project Preview
+                    </div>
+                </div>
+            </div>
+        </motion.div>
+    );
+};
+
+export default FloatingProjects;
