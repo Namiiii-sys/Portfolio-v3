@@ -58,7 +58,7 @@ const Hero = () => {
   return (
     <section
       ref={containerRef}
-      className="relative h-screen w-full overflow-hidden bg-[#02000a] text-white"
+      className="relative h-[100dvh] w-full overflow-hidden bg-[#02000a] text-white"
     >
       {/* LAYER 1: Deep Space & Stars */}
       <div ref={starsRef} className="absolute inset-0 z-0 bg-gradient-to-b from-[#05030a] via-[#0f0c29] to-[#02000a]">
@@ -81,7 +81,7 @@ const Hero = () => {
       {/* LAYER 3: Volumetric Planet */}
       <div
         ref={planetRef}
-        className="absolute top-[10%] right-[8%] w-[20vh] h-[20vh] md:w-[36vh] md:h-[36vh] rounded-full z-20"
+        className="absolute top-[12%] right-[5%] md:top-[10%] md:right-[8%] w-[18vh] h-[18vh] md:w-[36vh] md:h-[36vh] rounded-full z-20"
         style={{
           // Complex gradient for 3D sphere effect (Light source top-left)
           background: 'radial-gradient(circle at 25% 25%, #a855f7 0%, #3b0764 40%, #000000 85%)',
@@ -105,8 +105,8 @@ const Hero = () => {
       />
 
       {/* LAYER 5: Intro Text */}
-      <div className="absolute inset-0 flex flex-col items-center justify-center z-35 pointer-events-none pb-[15vh]">
-        <h2 ref={introTextRef} className="text-xl md:text-2xl text-purple-200 tracking-[0.4em] font-extralight uppercase mb-8 opacity-90">
+      <div className="absolute top-[32%] w-full flex flex-col items-center justify-center z-35 pointer-events-none">
+        <h2 ref={introTextRef} className="text-lg sm:text-xl md:text-2xl text-purple-200 tracking-[0.4em] font-extralight uppercase mb-4 md:mb-8 opacity-90">
           Hello, I am
         </h2>
       </div>
@@ -122,21 +122,23 @@ const Hero = () => {
       />
 
 
-      <div className="absolute inset-0 flex flex-col items-center justify-center z-45 pointer-events-none pt-[5vh]">
+      <div className="absolute top-[38%] w-full flex flex-col items-center justify-center z-45 pointer-events-none">
         <h1
           ref={nameTextRef}
-          className="text-7xl md:text-[8rem] font-serif font-bold tracking-wide text-white drop-shadow-[0_0_60px_rgba(168,85,247,0.5)] leading-none"
+          className="text-5xl sm:text-7xl md:text-[8rem] font-serif font-bold tracking-wide text-white drop-shadow-[0_0_60px_rgba(168,85,247,0.5)] leading-none text-center px-4"
         >
           <span className="bg-clip-text text-transparent bg-gradient-to-b from-white via-indigo-100 to-indigo-500">
             Namita Mehra
           </span>
         </h1>
 
-        <div className="mt-6 flex flex-wrap justify-center items-center gap-3 md:gap-6 text-indigo-200/80 font-light tracking-[0.15em] text-xs md:text-sm uppercase animate-fade-in-up">
+        <div className="mt-4 md:mt-6 flex flex-wrap justify-center items-center gap-2 md:gap-6 text-indigo-200/80 font-light tracking-[0.1em] text-[10px] md:text-sm uppercase animate-fade-in-up px-6 md:px-0 leading-relaxed">
           <span>Full Stack Developer</span>
-          <span className="w-1 h-1 rounded-full bg-indigo-500" />
+          <span className="w-1 h-1 rounded-full bg-indigo-500 hidden md:block" />
+          <span className="w-0.5 h-0.5 rounded-full bg-indigo-500 md:hidden" />
           <span>ML Enthusiast</span>
-          <span className="w-1 h-1 rounded-full bg-indigo-500" />
+          <span className="w-1 h-1 rounded-full bg-indigo-500 hidden md:block" />
+          <span className="w-0.5 h-0.5 rounded-full bg-indigo-500 md:hidden" />
           <span>AI Explorer</span>
           <span className="w-1 h-1 rounded-full bg-indigo-500 hidden md:block" />
           <span className="hidden md:block">Open Source Contributor</span>
