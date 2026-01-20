@@ -318,7 +318,7 @@ const HeroParallax = ({
     );
 };
 
-export const Header = () => {
+const Header = () => {
     return (
         <div className="max-w-7xl relative mx-auto py-20 md:py-40 px-4 w-full  left-0 top-0">
             <Link href="/" className="inline-flex items-center gap-2 text-indigo-400 hover:text-indigo-300 mb-8 transition-colors z-50 relative">
@@ -335,7 +335,7 @@ export const Header = () => {
     );
 };
 
-export const ProductCard = ({
+const ProductCard = ({
     product,
     translate,
     onClick
