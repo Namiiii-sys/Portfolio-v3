@@ -7,28 +7,25 @@ const projects = [
     {
         title: "RentoAI",
         description: "AI-Powered Rental Platform leveraging recommendation systems.",
-        tech: ["Next.js", "Tailwind", "Clerk"],
+        tech: ["Next.js", "Tailwind", "Framer Motion", "Clerk"],
         link: "#",
         github: "#",
-        image: "/project-rento.png", // Placeholder
         color: "from-blue-400 to-cyan-300",
     },
     {
         title: "Swiftpass",
         description: "QR-based check-in solution for event organizers.",
-        tech: ["React", "Firebase", "QRCode"],
+        tech: ["React", "Firebase", "Tailwind", "QRCode"],
         link: "#",
         github: "#",
-        image: "/project-swiftpass.png", // Placeholder
         color: "from-purple-400 to-pink-300",
     },
     {
         title: "Quickfix",
         description: "Local Service Finder connecting users with professionals.",
-        tech: ["MongoDB", "Express", "Next.js"],
+        tech: ["Next.js", "MongoDB", "Express", "Tailwind"],
         link: "#",
         github: "#",
-        image: "/project-quickfix.png", // Placeholder
         color: "from-green-400 to-emerald-300",
     },
     {
@@ -37,7 +34,6 @@ const projects = [
         tech: ["Django", "PostgreSQL", "Bootstrap"],
         link: "#",
         github: "#",
-        image: "/project-quirky.png", // Placeholder
         color: "from-orange-400 to-red-300",
     },
 ];
@@ -53,6 +49,12 @@ const FloatingProjects = () => {
                 {projects.map((project, index) => (
                     <FloatingCard key={index} project={project} index={index} />
                 ))}
+            </div>
+
+            <div className="mt-20 text-center">
+                <a href="/" className="text-gray-400 hover:text-white transition-colors">
+                    ← Back to Home
+                </a>
             </div>
         </div>
     );
@@ -110,11 +112,12 @@ const FloatingCard = ({ project, index }: { project: Project; index: number }) =
                     ))}
                 </div>
 
-                {/* Placeholder for Image/Video Area */}
-                <div className="w-full h-48 bg-black/20 rounded-xl border border-white/5 overflow-hidden relative">
+                {/* Placeholder for Image/Video Area - Removed specific image paths to prevent broken images */}
+                <div className="w-full h-48 bg-black/20 rounded-xl border border-white/5 overflow-hidden relative group-hover:scale-[1.02] transition-transform duration-500">
                     <div className="absolute inset-0 flex items-center justify-center text-gray-600 text-sm">
-                        Project Preview
+                        Project Preview (Video/Image)
                     </div>
+                    <div className={`absolute inset-0 bg-gradient-to-br ${project.color} opacity-0 group-hover:opacity-10 transition-opacity duration-500`} />
                 </div>
             </div>
         </motion.div>

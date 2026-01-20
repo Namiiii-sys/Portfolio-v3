@@ -25,32 +25,32 @@ const Hero = () => {
         trigger: containerRef.current,
         start: "top top",
         end: "bottom top",
-        scrub: 1, // Reduced from 1.5 for snappier response
+        scrub: 1, 
       },
     });
 
-    // 1. Stars: Moves slightly 
+    // Stars
     tl.to(starsRef.current, { yPercent: 10, ease: "none" }, 0);
 
-    // 2. Planet: Slow movement to feel massive and distant
+    // Planet
     tl.to(planetRef.current, { yPercent: 25, ease: "none" }, 0);
 
-    // 3. Far Ridge: Starts moving immediately
+    // Far Ridge
     tl.to(mountainFarRef.current, { yPercent: 40, ease: "none" }, 0);
 
-    // 4. Intro Text
+    // Intro Text
     tl.to(introTextRef.current, { yPercent: 60, opacity: 0, ease: "power1.in" }, 0);
 
-    // 5. Mid Ridge: Clear separation from Far Ridge
+    // Mid Ridge
     tl.to(mountainMidRef.current, { yPercent: 70, ease: "none" }, 0);
 
-    // 6. Name Text: Moves faster than intro
+    // Name Text
     tl.to(nameTextRef.current, { yPercent: 90, scale: 1.1, opacity: 0, ease: "power1.in" }, 0);
 
-    // 7. Front Ridge: Moves FASTEST for immediate depth feedback
+    // Front Ridge
     tl.to(mountainCloseRef.current, { yPercent: 120, ease: "none" }, 0);
 
-    // 8. Fog: Drifts/Thinking
+    // Fog
     tl.to(fogRef.current, { yPercent: -30, opacity: 0, ease: "none" }, 0);
 
   }, { scope: containerRef });
@@ -58,42 +58,21 @@ const Hero = () => {
   return (
     <section
       ref={containerRef}
-      className="relative h-[100dvh] w-full overflow-hidden bg-[#02000a] text-white"
+      className="relative h-[100dvh] w-full overflow-hidden bg-transparent text-white"
     >
-      {/* LAYER 1: Deep Space & Stars */}
-      <div ref={starsRef} className="absolute inset-0 z-0 bg-gradient-to-b from-[#05030a] via-[#0f0c29] to-[#02000a]">
-        <div className="absolute inset-0 opacity-30 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] bg-repeat opacity-20" />
-        <div
-          className="absolute inset-0 opacity-80"
-          style={{
-            backgroundImage: 'radial-gradient(1.5px 1.5px at 10% 10%, white 100%, transparent), radial-gradient(1px 1px at 20% 40%, white 100%, transparent), radial-gradient(2px 2px at 50% 50%, white 100%, transparent)',
-            backgroundSize: '400px 400px',
-          }}
-        />
-      </div>
-
-      {/* LAYER 2: Atmosphere / Fog */}
-      <div ref={fogRef} className="absolute inset-0 z-10 pointer-events-none mix-blend-screen opacity-60">
-        <div className="absolute top-[-20%] left-[-10%] w-[80vw] h-[80vw] bg-purple-900/20 rounded-full blur-[120px]" />
-        <div className="absolute top-[30%] right-[-10%] w-[60vw] h-[60vw] bg-indigo-900/15 rounded-full blur-[100px]" />
-      </div>
-
       {/* LAYER 3: Volumetric Planet */}
       <div
         ref={planetRef}
         className="absolute top-[12%] right-[5%] md:top-[10%] md:right-[8%] w-[18vh] h-[18vh] md:w-[36vh] md:h-[36vh] rounded-full z-20"
         style={{
-          // Complex gradient for 3D sphere effect (Light source top-left)
           background: 'radial-gradient(circle at 25% 25%, #a855f7 0%, #3b0764 40%, #000000 85%)',
-          // Inner shadow for dark side, Outer shadow for atmospheric glow
           boxShadow: 'inset -20px -20px 60px rgba(0,0,0,0.9), 0 0 50px rgba(126, 34, 206, 0.3)'
         }}
       >
-        {/* Subtle terminator line texture overlay */}
         <div className="absolute inset-0 rounded-full opacity-30 bg-gradient-to-br from-transparent to-black" />
       </div>
 
-      {/* LAYER 4: Far Mountain Ridge */}
+      {/* Far Mountain Ridge */}
       <div
         ref={mountainFarRef}
         className="absolute bottom-[-2%] left-0 w-full h-[40vh] z-30"
@@ -104,14 +83,14 @@ const Hero = () => {
         }}
       />
 
-      {/* LAYER 5: Intro Text */}
+      {/* Intro Text */}
       <div className="absolute top-[32%] w-full flex flex-col items-center justify-center z-35 pointer-events-none">
         <h2 ref={introTextRef} className="text-lg sm:text-xl md:text-2xl text-purple-200 tracking-[0.4em] font-extralight uppercase mb-4 md:mb-8 opacity-90">
           Hello, I am
         </h2>
       </div>
 
-      {/* LAYER 6: Mid Mountain Ridge */}
+      {/* Mid Mountain Ridge */}
       <div
         ref={mountainMidRef}
         className="absolute bottom-[-5%] left-0 w-full h-[45vh] z-40"
@@ -145,7 +124,7 @@ const Hero = () => {
         </div>
       </div>
 
-      {/* LAYER 8: Front Mountain Ridge (Foreground) */}
+      {/* Front Mountain Ridge (Foreground) */}
       <div
         ref={mountainCloseRef}
         className="absolute bottom-[-10%] left-0 w-full h-[50vh] z-50"
@@ -155,7 +134,6 @@ const Hero = () => {
         }}
       />
 
-      {/* Foreground Dust/Noise Overlay */}
       <div className="absolute inset-0 z-60 pointer-events-none opacity-20 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] mix-blend-overlay" />
 
 

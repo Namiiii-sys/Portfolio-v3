@@ -1,8 +1,8 @@
 "use client";
 
-import React, { useEffect, useRef, useState } from "react";
-import { motion } from "framer-motion";
+import React, { useRef } from "react";
 import { FiExternalLink } from "react-icons/fi";
+import { motion, useScroll, useTransform, MotionValue } from "framer-motion";
 
 type Project = {
   id: number;
@@ -17,151 +17,163 @@ const projects: Project[] = [
     id: 1,
     title: "RentoAI - AI-Powered Rental Platform",
     video: "/rento.mp4",
-    desc: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, voluptatum.",
+    desc: "A platform that leverages AI to simplify property rental searches, integrating recommendation systems and smart filtering.",
     techStack: ["Next.js", "Tailwind", "Framer Motion", "Clerk"],
   },
   {
     id: 2,
     title: "Swiftpass - Event QR Check-in System",
     video: "/rento.mp4",
-    desc: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, voluptatum.",
+    desc: "A streamlined QR-based check-in solution for event organizers with CSV upload, email automation, and scanning features.",
     techStack: ["React", "Firebase", "Tailwind", "QRCode"],
   },
   {
     id: 3,
     title: "Quickfix - Local Service Finder",
     video: "/rento.mp4",
-    desc: "Lorem ipsum dolor sit amet consectetur adipisicing elit.",
+    desc: "An all-in-one platform connecting users with nearby repair and maintenance professionals in real-time.",
     techStack: ["Next.js", "MongoDB", "Express", "Tailwind"],
   },
   {
     id: 4,
     title: "QuirkyCart - E-commerce Platform",
     video: "/quirkycart.mp4",
-    desc: "Lorem ipsum dolor sit amet consectetur adipisicing elit.",
+    desc: "A creative e-commerce web app with user-friendly UI, smooth checkout, and Django-powered backend.",
     techStack: ["Django", "PostgreSQL", "Bootstrap"],
   },
 ];
 
-const groupProjects = (projects: Project[]): Project[][] => {
-  const grouped: Project[][] = [];
-  for (let i = 0; i < projects.length; i += 2) {
-    grouped.push([projects[i], projects[i + 1]].filter(Boolean) as Project[]);
-  }
-  return grouped;
+const ProjectCard: React.FC<{
+  project: Project;
+  index: number;
+  total: number;
+  containerProgress: MotionValue<number>;
+}> = ({ project, index, total, containerProgress }) => {
+
+  const cardsBelow = total - index - 1;
+  const startScale = 1;
+  const endScale = 1 - (cardsBelow * 0.08); // Balanced scaling (0.1 was too aggressive with shorter scroll)
+
+  const scale = useTransform(
+    containerProgress,
+    [index / total, 1],
+    [startScale, endScale]
+  );
+
+  // Top position calculation
+  const topPosition = `calc(5vh + ${index * 60}px)`; // Responsive step value
+
+  return (
+    <motion.section
+      className="sticky top-0 flex flex-col justify-start items-center h-[70vh] w-full mb-10 md:mb-0" // Reduced height from screen to 70vh, added margin bottom
+      style={{
+        top: topPosition,
+        scale,
+        zIndex: index + 1,
+      }}
+    >
+      <article className="w-[90%] md:w-2/3 max-w-4xl bg-gradient-to-br from-indigo-950/90 to-purple-950/80 backdrop-blur-3xl border border-white/10 rounded-3xl p-6 flex flex-col items-center shadow-2xl hover:shadow-purple-500/20 transition-shadow duration-500 relative overflow-hidden group">
+        {/* Glow Effects */}
+        <div className="absolute top-0 -left-1/2 w-full h-full bg-blue-500/20 blur-[120px] rounded-full pointer-events-none group-hover:bg-blue-500/30 transition-all duration-500" />
+        <div className="absolute bottom-0 -right-1/2 w-full h-full bg-purple-500/20 blur-[120px] rounded-full pointer-events-none group-hover:bg-purple-500/30 transition-all duration-500" />
+
+        {/* Video Container - Reduced bottom margin */}
+        <div className="relative w-full aspect-video rounded-2xl overflow-hidden mb-5 shadow-xl border border-white/5">
+          <div className="absolute inset-0 bg-indigo-500/10 mix-blend-overlay z-10" />
+          <motion.video
+            src={project.video}
+            loop
+            muted
+            autoPlay
+            playsInline
+            className="w-full h-full object-cover"
+          />
+          {/* Tech Stack Overlay on Video */}
+          <div className="absolute bottom-3 left-3 flex flex-wrap gap-2 z-20">
+            {project.techStack.map((tech, idx) => (
+              <span
+                key={idx}
+                className="bg-black/60 backdrop-blur-md border border-white/10 text-white text-[10px] px-2 py-1 rounded-full font-medium"
+              >
+                {tech}
+              </span>
+            ))}
+          </div>
+        </div>
+
+        {/* Content */}
+        <h2 className="text-xl md:text-3xl font-bold text-center mb-2 leading-tight">
+          {project.title.split(" ").map((word, i) =>
+            i === 2 || i === 3 ? (
+              <span
+                key={i}
+                className="bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent"
+              >
+                {word}{" "}
+              </span>
+            ) : (
+              <span key={i} className="text-white">{word} </span>
+            )
+          )}
+        </h2>
+
+        <p className="text-gray-300 text-sm md:text-base text-center mb-6 leading-relaxed max-w-2xl px-4 line-clamp-3 md:line-clamp-none">
+          {project.desc}
+        </p>
+
+        {/* Buttons */}
+        <div className="flex gap-3">
+          <button className="px-5 py-2.5 flex items-center gap-2 rounded-xl border border-white/20 text-white hover:bg-white/5 transition-all duration-300 font-medium group/btn text-sm">
+            <FiExternalLink className="group-hover/btn:rotate-45 transition-transform" /> Code
+          </button>
+          <button className="px-5 py-2.5 flex items-center gap-2 rounded-xl bg-white text-black hover:bg-gray-200 transition-all duration-300 font-medium shadow-lg hover:shawdow-white/20 text-sm">
+            <FiExternalLink /> Live Demo
+          </button>
+        </div>
+      </article>
+    </motion.section>
+  );
 };
 
 const ProjectSection: React.FC = () => {
-  const groupedProjects = groupProjects(projects);
-  const [activeGroupIndex, setActiveGroupIndex] = useState<number>(0);
-  const groupRefs = useRef<(HTMLDivElement | null)[]>([]);
+  const containerRef = useRef<HTMLDivElement | null>(null);
 
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            const index = groupRefs.current.findIndex((ref) => ref === entry.target);
-            if (index !== -1) setActiveGroupIndex(index);
-          }
-        });
-      },
-      {
-        root: null,
-        threshold: 0.3,
-        rootMargin: "-10% 0px -10% 0px",
-      }
-    );
-
-    groupRefs.current.forEach((ref) => ref && observer.observe(ref));
-    return () => {
-      // eslint-disable-next-line react-hooks/exhaustive-deps
-      groupRefs.current.forEach((ref) => ref && observer.unobserve(ref));
-    };
-  }, []);
+  const { scrollYProgress } = useScroll({
+    target: containerRef,
+    offset: ["start start", "end end"],
+  });
 
   return (
-    <section className="py-20 mt-10 px-6 md:px-12 bg-transparent border border-indigo-900 text-white">
-      <h1 className="text-4xl font-bold mb-20 text-center bg-gradient-to-r from-blue-500 to-purple-600 bg-clip-text text-transparent">
-        MY PROJECTS
-      </h1>
+    <section className="relative text-white py-20" id="projects">
+      <div className="text-center mb-10 z-0">
+        <h1 className="text-4xl md:text-5xl font-bold bg-gradient-to-r from-blue-400 to-purple-600 bg-clip-text text-transparent mb-4">
+          SELECTED PROJECTS
+        </h1>
+        <p className="text-gray-400">Scroll to explore my work</p>
+      </div>
 
-      <div className="flex flex-col gap-20 max-w-6xl mx-auto">
-        {groupedProjects.map((group, groupIndex) => (
-          <div
-            key={groupIndex}
-            ref={(el) => {
-              groupRefs.current[groupIndex] = el;
-            }}
-            className={`flex flex-col md:flex-row gap-10 transition-all duration-700 ${
-              activeGroupIndex === groupIndex
-                ? "scale-100 opacity-100 z-10"
-                : "scale-[0.96] opacity-60 blur-[3px] z-0"
-            }`}
-          >
-            {group.map((project: Project, i: number) => (
-              <motion.div
-                key={project.id}
-                initial={{ opacity: 0, x: i === 0 ? -50 : 50 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: false, amount: 0.3 }}
-                transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
-                className="flex-1 flex flex-col items-center bg-transparent rounded-xl overflow-hidden p-4"
-              >
-                <div className="relative w-4/6 rounded-xl overflow-hidden">
-                  <div className="absolute bottom-2 left-2 flex flex-wrap gap-2 z-20 py-2">
-                    {project.techStack?.map((tech, index) => (
-                      <span
-                        key={index}
-                        className="bg-indigo-900/40 border-2 text-white text-[10px] px-2 py-[2px] rounded-full font-medium"
-                      >
-                        {tech}
-                      </span>
-                    ))}
-                  </div>
-
-                  <video
-                    src={project.video}
-                    loop
-                    muted
-                    autoPlay
-                    playsInline
-                    className="rounded-xl w-full h-auto object-cover"
-                  />
-                  <div className="absolute inset-0 bg-transparent border-3 border-indigo-900 transition-all" />
-                </div>
-
-                <h2 className="text-xl font-bold mt-10 text-center">
-                  {project.title.split(" ").map((word, i) =>
-                    i === 2 || i === 3 ? (
-                      <span
-                        key={i}
-                        className="bg-gradient-to-r from-blue-500 to-purple-600 bg-clip-text text-transparent"
-                      >
-                        {word}{" "}
-                      </span>
-                    ) : (
-                      <span key={i}>{word} </span>
-                    )
-                  )}
-                </h2>
-
-                <p className="text-gray-300 text-sm mt-2 text-center">
-                  {project.desc}
-                </p>
-
-                <div className="flex gap-3 mt-4">
-                  <button className="px-4 py-2 flex items-center gap-2 rounded border border-purple-600 text-white hover:bg-purple-600/20 transition-all">
-                    <FiExternalLink /> Github
-                  </button>
-                  <button className="px-4 py-2 flex items-center gap-2 rounded border border-purple-600 text-white hover:bg-purple-600/20 transition-all">
-                    <FiExternalLink /> Demo
-                  </button>
-                </div>
-              </motion.div>
-            ))}
-          </div>
+      <div ref={containerRef} className="relative z-10" style={{ height: `calc(${projects.length * 60}vh + 50vh)` }}>
+        {projects.map((project, index) => (
+          <ProjectCard
+            key={project.id}
+            project={project}
+            index={index}
+            total={projects.length}
+            containerProgress={scrollYProgress}
+          />
         ))}
+      </div>
+
+      <div className="h-20" />
+
+      <div className="flex justify-center pb-20 relative z-20">
+        <a
+          href="/projects"
+          className="px-8 py-3 bg-white/5 border border-white/10 hover:bg-white/10 backdrop-blur-md text-white rounded-full transition-all duration-300 flex items-center gap-2 group"
+        >
+          View Full Archive
+          <FiExternalLink className="group-hover:translate-x-1 transition-transform" />
+        </a>
       </div>
     </section>
   );

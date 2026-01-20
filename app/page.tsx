@@ -4,14 +4,18 @@ import Hero from './components/Hero'
 import About from './components/About'
 import Skills from './components/Skills'
 import Socials from './components/Socials'
+import ProjectSection from './components/projects'
+import Certificates from './components/Certificates'
 
 const page = () => {
   return (
-    <div className="relative overflow-x-hidden min-h-screen">
+    <div className="relative min-h-screen">
       <Navbar />
       <Hero />
       <About />
+      <ProjectSection />
       <Skills />
+      <Certificates />
       <Socials />
     </div>
   )
