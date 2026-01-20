@@ -2,6 +2,7 @@
 import React from "react";
 import { motion } from "framer-motion";
 import { FiExternalLink, FiGithub } from "react-icons/fi";
+import Link from 'next/link';
 
 const projects = [
     {
@@ -52,9 +53,9 @@ const FloatingProjects = () => {
             </div>
 
             <div className="mt-20 text-center">
-                <a href="/" className="text-gray-400 hover:text-white transition-colors">
+                <Link href="/" className="text-gray-400 hover:text-white transition-colors">
                     ← Back to Home
-                </a>
+                </Link>
             </div>
         </div>
     );

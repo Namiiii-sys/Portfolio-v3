@@ -1,7 +1,7 @@
 "use client";
 import React from 'react';
 import { motion } from 'framer-motion';
-import { FaAward, FaCertificate } from 'react-icons/fa';
+import { FaAward } from 'react-icons/fa';
 
 interface Certificate {
     title: string;

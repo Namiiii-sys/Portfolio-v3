@@ -1,7 +1,7 @@
 "use client";
 import React from "react";
 import { motion } from "framer-motion";
-import { FiGithub, FiLinkedin, FiExternalLink, FiCpu, FiCode } from "react-icons/fi";
+import { FiGithub, FiLinkedin, FiExternalLink } from "react-icons/fi";
 import { SiLeetcode, SiGeeksforgeeks } from "react-icons/si";
 import Image from "next/image";
 
@@ -106,7 +106,7 @@ const Socials = () => {
     );
 };
 
-const ProfileBadge = ({ name, handle, icon, link, color, borderColor }: any) => (
+const ProfileBadge = ({ name, handle, icon, link, color, borderColor }: { name: string, handle: string, icon: React.ReactNode, link: string, color: string, borderColor: string }) => (
     <a
         href={link}
         target="_blank"

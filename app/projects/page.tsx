@@ -1,6 +1,6 @@
 "use client";
 import React, { useRef, useState, useEffect } from "react";
-import { motion, useScroll, useTransform, useSpring, AnimatePresence } from "framer-motion";
+import { motion, useScroll, useTransform, useSpring, AnimatePresence, MotionValue } from "framer-motion";
 import { FiExternalLink, FiArrowLeft, FiGithub, FiX } from "react-icons/fi";
 import Link from 'next/link';
 import Image from 'next/image';
@@ -345,7 +345,7 @@ export const ProductCard = ({
         link: string;
         thumbnail: string;
     };
-    translate: any;
+    translate: { x: MotionValue<number> };
     onClick: () => void;
 }) => {
     return (
