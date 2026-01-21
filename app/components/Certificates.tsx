@@ -1,7 +1,7 @@
 "use client";
 
-import React, { useRef } from "react";
-import { motion, useScroll, useTransform } from "framer-motion";
+import React, { useRef, useState } from "react";
+import { motion, useScroll, useTransform, AnimatePresence } from "framer-motion";
 import { FiAward } from "react-icons/fi";
 import Image from "next/image";
 
@@ -20,31 +20,59 @@ interface TimelineCardProps {
   index: number;
 }
 
-const certifications: Certification[] = [
-  {
-    id: 1,
-    title: "Code Kshetra 2.0",
-    issuer: "JIMS, Rohini",
-    date: "Feb, 2025",
-    image: "/cert.webp",
-  },
-  {
-    id: 2,
-    title: "BrainWave",
-    issuer: "DTU, Delhi",
-    date: "2024",
-    image: "/cert.webp",
-  },
-  {
-    id: 3,
-    title: "BVP Hex",
-    issuer: "Bharati Vidyapeeth, Delhi",
-    date: "2024",
-    image: "/cert.webp",
-  }
-];
+type Category = "Hackathons" | "Professional";
+
+const certifications: Record<Category, Certification[]> = {
+  Hackathons: [
+    {
+      id: 1,
+      title: "Code Kshetra 2.0",
+      issuer: "JIMS, Rohini",
+      date: "Feb, 2025",
+      image: "/cert.webp",
+    },
+    {
+      id: 2,
+      title: "BrainWave",
+      issuer: "DTU, Delhi",
+      date: "2024",
+      image: "/cert.webp",
+    },
+    {
+      id: 3,
+      title: "BVP Hex",
+      issuer: "Bharati Vidyapeeth, Delhi",
+      date: "2024",
+      image: "/cert.webp",
+    }
+  ],
+  Professional: [
+    {
+      id: 1,
+      title: "Mastering Python libraries for Data Science",
+      issuer: "Coursera / Udemy",
+      date: "2024",
+      image: "/cert.webp",
+    },
+    {
+      id: 2,
+      title: "Machine Learning fundamentals",
+      issuer: "Coursera / Udemy",
+      date: "2024",
+      image: "/cert.webp",
+    },
+    {
+      id: 3,
+      title: "AWS cloud computing",
+      issuer: "Coursera / Udemy",
+      date: "2024",
+      image: "/cert.webp",
+    }
+  ]
+};
 
 export default function Certifications() {
+  const [activeTab, setActiveTab] = useState<Category>("Hackathons");
   const containerRef = useRef(null);
   const { scrollYProgress } = useScroll({
     target: containerRef,
@@ -59,7 +87,22 @@ export default function Certifications() {
         MY CERTIFICATIONS
       </h1>
 
-      <div ref={containerRef} className="relative max-w-5xl mx-auto">
+      <div className="flex justify-center gap-2 mb-12">
+        {(Object.keys(certifications) as Category[]).map((tab) => (
+          <button
+            key={tab}
+            onClick={() => setActiveTab(tab)}
+            className={`px-6 py-2 rounded-full text-sm font-medium transition-all duration-300 ${activeTab === tab
+              ? "bg-indigo-600 text-white shadow-lg shadow-indigo-500/25"
+              : "text-gray-400 hover:text-white hover:bg-white/5 border border-white/5"
+              }`}
+          >
+            {tab}
+          </button>
+        ))}
+      </div>
+
+      <div ref={containerRef} className="relative max-w-5xl mx-auto min-h-[400px]">
 
         <div className="absolute left-1/2 top-0 h-full w-0.5 bg-gray-800 -translate-x-1/2">
           <motion.div
@@ -68,15 +111,17 @@ export default function Certifications() {
           />
         </div>
 
-        <div className="space-y-13">
-          {certifications.map((cert, index) => (
-            <TimelineCard
-              key={cert.id}
-              cert={cert}
-              isLeft={index % 2 === 0}
-              index={index}
-            />
-          ))}
+        <div className="space-y-12">
+          <AnimatePresence mode="wait">
+            {certifications[activeTab].map((cert, index) => (
+              <TimelineCard
+                key={cert.id}
+                cert={cert}
+                isLeft={index % 2 === 0}
+                index={index}
+              />
+            ))}
+          </AnimatePresence>
         </div>
       </div>
     </section>
