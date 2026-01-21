@@ -54,9 +54,9 @@ export default function Certifications() {
   const lineHeight = useTransform(scrollYProgress, [0, 1], ["0%", "100%"]);
 
   return (
-    <section className="py-20 px-6 md:px-20 text-white">
-      <h1 className="text-4xl font-bold mb-20 text-center bg-gradient-to-r from-purple-400 to-blue-500 bg-clip-text text-transparent">
-        My Certifications
+    <section className="py-10 px-6 md:px-20 text-white">
+      <h1 className="text-4xl font-bold mb-20 text-center bg-clip-text text-transparent bg-gradient-to-b from-white via-indigo-100 to-indigo-500">
+        MY CERTIFICATIONS
       </h1>
 
       <div ref={containerRef} className="relative max-w-5xl mx-auto">
@@ -101,10 +101,10 @@ function TimelineCard({ cert, isLeft }: TimelineCardProps) {
       </div>
 
       <div className={`w-full md:w-1/2 ${isLeft ? "md:pr-16" : "md:pl-16"}`}>
-        <div className="p-6 flex justify-between items-center gap-6 rounded-xl bg-white/10 backdrop-blur-lg border border-purple-950 backdrop-saturate-150 shadow-xl">
+        <div className="p-4 flex justify-between items-center gap-6 rounded-xl bg-white/10 backdrop-blur-lg border border-purple-950 backdrop-saturate-150 shadow-xl">
           <div>
             <h3 className="text-xl font-bold mb-1">{cert.title}</h3>
-            <p className="text-purple-400 mb-3">
+            <p className="text-purple-400 mb-2">
               {cert.issuer} · {cert.date}
             </p>
             {cert.description && (

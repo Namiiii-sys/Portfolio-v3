@@ -52,7 +52,7 @@ const ProjectCard: React.FC<{
 
   const cardsBelow = total - index - 1;
   const startScale = 1;
-  const endScale = 1 - (cardsBelow * 0.08); // Balanced scaling (0.1 was too aggressive with shorter scroll)
+  const endScale = 1 - (cardsBelow * 0.08);
 
   const scale = useTransform(
     containerProgress,
@@ -60,12 +60,11 @@ const ProjectCard: React.FC<{
     [startScale, endScale]
   );
 
-  // Top position calculation
-  const topPosition = `calc(5vh + ${index * 60}px)`; // Responsive step value
+  const topPosition = `calc(5vh + ${index * 60}px)`;
 
   return (
     <motion.section
-      className="sticky top-0 flex flex-col justify-start items-center h-[70vh] w-full mb-10 md:mb-0" // Reduced height from screen to 70vh, added margin bottom
+      className="sticky top-0 flex flex-col justify-start items-center h-[70vh] w-full mb-10 md:mb-0"
       style={{
         top: topPosition,
         scale,
@@ -73,11 +72,9 @@ const ProjectCard: React.FC<{
       }}
     >
       <article className="w-[90%] md:w-2/3 max-w-4xl bg-gradient-to-br from-indigo-950/90 to-purple-950/80 backdrop-blur-3xl border border-white/10 rounded-3xl p-6 flex flex-col items-center shadow-2xl hover:shadow-purple-500/20 transition-shadow duration-500 relative overflow-hidden group">
-        {/* Glow Effects */}
         <div className="absolute top-0 -left-1/2 w-full h-full bg-blue-500/20 blur-[120px] rounded-full pointer-events-none group-hover:bg-blue-500/30 transition-all duration-500" />
         <div className="absolute bottom-0 -right-1/2 w-full h-full bg-purple-500/20 blur-[120px] rounded-full pointer-events-none group-hover:bg-purple-500/30 transition-all duration-500" />
 
-        {/* Video Container - Reduced bottom margin */}
         <div className="relative w-full aspect-video rounded-2xl overflow-hidden mb-5 shadow-xl border border-white/5">
           <div className="absolute inset-0 bg-indigo-500/10 mix-blend-overlay z-10" />
           <motion.video
@@ -88,7 +85,6 @@ const ProjectCard: React.FC<{
             playsInline
             className="w-full h-full object-cover"
           />
-          {/* Tech Stack Overlay on Video */}
           <div className="absolute bottom-3 left-3 flex flex-wrap gap-2 z-20">
             {project.techStack.map((tech, idx) => (
               <span
@@ -101,7 +97,6 @@ const ProjectCard: React.FC<{
           </div>
         </div>
 
-        {/* Content */}
         <h2 className="text-xl md:text-3xl font-bold text-center mb-2 leading-tight">
           {project.title.split(" ").map((word, i) =>
             i === 2 || i === 3 ? (
@@ -121,7 +116,6 @@ const ProjectCard: React.FC<{
           {project.desc}
         </p>
 
-        {/* Buttons */}
         <div className="flex gap-3">
           <button className="px-5 py-2.5 flex items-center gap-2 rounded-xl border border-white/20 text-white hover:bg-white/5 transition-all duration-300 font-medium group/btn text-sm">
             <FiExternalLink className="group-hover/btn:rotate-45 transition-transform" /> Code
@@ -146,8 +140,8 @@ const ProjectSection: React.FC = () => {
   return (
     <section className="relative text-white py-20" id="projects">
       <div className="text-center mb-10 z-0">
-        <h1 className="text-4xl md:text-5xl font-bold bg-gradient-to-r from-blue-400 to-purple-600 bg-clip-text text-transparent mb-4">
-          SELECTED PROJECTS
+        <h1 className="text-4xl md:text-4xl font-bold bg-clip-text text-transparent bg-gradient-to-b from-white via-indigo-100 to-indigo-500 mb-4">
+          MY PROJECTS
         </h1>
         <p className="text-gray-400">Scroll to explore my work</p>
       </div>
@@ -166,7 +160,7 @@ const ProjectSection: React.FC = () => {
 
       <div className="h-20" />
 
-      <div className="flex justify-center pb-20 relative z-20">
+      <div className="flex justify-center pb-10 relative z-20">
         <a
           href="/projects"
           className="px-8 py-3 bg-white/5 border border-white/10 hover:bg-white/10 backdrop-blur-md text-white rounded-full transition-all duration-300 flex items-center gap-2 group"

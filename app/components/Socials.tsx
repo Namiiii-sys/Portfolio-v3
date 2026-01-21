@@ -9,8 +9,8 @@ const Socials = () => {
     return (
         <section id="socials" className="py-20 px-6 md:px-12 relative z-10 w-full max-w-5xl mx-auto">
             <div className="mb-12 text-center">
-                <h2 className="text-3xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-white to-white/60 mb-4">
-                    Command Center
+                <h2 className="text-3xl font-bold bg-clip-text text-transparent bg-gradient-to-b from-white via-indigo-100 to-indigo-500 mb-4">
+                    CODE & CONTRIBUTIONS
                 </h2>
                 <p className="text-gray-400 max-w-xl mx-auto text-sm">
                     Tracking activity, contributions, and network.
@@ -48,7 +48,6 @@ const Socials = () => {
                     </div>
                 </div>
 
-                {/* Bottom Section: Stats & Links Grid */}
                 <div className="grid grid-cols-1 md:grid-cols-3 divide-y md:divide-y-0 md:divide-x divide-white/5">
 
                     {/* Column 1: Github Stats */}
