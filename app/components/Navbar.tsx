@@ -87,7 +87,7 @@ const Navbar = () => {
         </div>
       </div>
 
-      {/* Mobile Menu Toggle */}
+      {/* mobile menu */}
       <div className="navbar-container md:hidden py-4 px-6 flex justify-end fixed top-0 left-0 w-full bg-[#0f0f0f] shadow-lg z-10">
         <button onClick={() => setIsOpen(!isOpen)}>
           {isOpen ? (
@@ -126,7 +126,6 @@ const Navbar = () => {
               </a>
             ))}
 
-            {/* Social icons - exactly your original styles */}
             <div className="flex justify-start p-4 mt-8 place-items-baseline">
               <a
                 href="https://www.linkedin.com/in/namita-mh"

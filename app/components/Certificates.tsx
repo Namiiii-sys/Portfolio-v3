@@ -1,91 +1,129 @@
 "use client";
-import React from 'react';
-import { motion } from 'framer-motion';
-import { FaAward } from 'react-icons/fa';
 
-interface Certificate {
-    title: string;
-    issuer: string;
-    date: string;
-    link?: string;
+import React, { useRef } from "react";
+import { motion, useScroll, useTransform } from "framer-motion";
+import { FiAward } from "react-icons/fi";
+import Image from "next/image";
+
+interface Certification {
+  id: number;
+  title: string;
+  issuer: string;
+  date: string;
+  image: string;
+  description?: string;
 }
 
-const certificates: Certificate[] = [
-    {
-        title: "Full Stack Web Development",
-        issuer: "Udemy",
-        date: "2024",
-        link: "#"
-    },
-    {
-        title: "Machine Learning A-Z",
-        issuer: "Coursera",
-        date: "2023",
-        link: "#"
-    },
-    {
-        title: "React Native Specialist",
-        issuer: "Meta",
-        date: "2023",
-        link: "#"
-    },
-    {
-        title: "Cloud Computing Fundamentals",
-        issuer: "AWS",
-        date: "2024",
-        link: "#"
-    }
+interface TimelineCardProps {
+  cert: Certification;
+  isLeft: boolean;
+  index: number;
+}
+
+const certifications: Certification[] = [
+  {
+    id: 1,
+    title: "Code Kshetra 2.0",
+    issuer: "JIMS, Rohini",
+    date: "Feb, 2025",
+    image: "/cert.webp",
+  },
+  {
+    id: 2,
+    title: "BrainWave",
+    issuer: "DTU, Delhi",
+    date: "2024",
+    image: "/cert.webp",
+  },
+  {
+    id: 3,
+    title: "BVP Hex",
+    issuer: "Bharati Vidyapeeth, Delhi",
+    date: "2024",
+    image: "/cert.webp",
+  }
 ];
 
-const Certificates = () => {
-    return (
-        <section id="certificates" className="py-20 px-6 md:px-12 relative z-10 w-full max-w-7xl mx-auto">
-            <div className="text-center mb-16">
-                <h2 className="text-4xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-blue-400 to-purple-500 mb-4">
-                    Certifications
-                </h2>
-                <p className="text-gray-400 max-w-2xl mx-auto">
-                    Continuous learning and professional development.
-                </p>
-            </div>
+export default function Certifications() {
+  const containerRef = useRef(null);
+  const { scrollYProgress } = useScroll({
+    target: containerRef,
+    offset: ["start end", "end start"],
+  });
 
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-6">
-                {certificates.map((cert, index) => (
-                    <motion.div
-                        key={index}
-                        initial={{ opacity: 0, y: 20 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        transition={{ duration: 0.5, delay: index * 0.1 }}
-                        viewport={{ once: true }}
-                        className="bg-white/5 backdrop-blur-md border border-white/10 p-6 rounded-xl hover:bg-white/10 transition-all duration-300 flex items-start gap-4 group"
-                    >
-                        <div className="p-3 bg-indigo-500/20 rounded-lg text-indigo-400 group-hover:text-indigo-300 group-hover:scale-110 transition-all">
-                            <FaAward className="text-2xl" />
-                        </div>
-                        <div>
-                            <h3 className="text-xl font-semibold text-white group-hover:text-indigo-300 transition-colors">{cert.title}</h3>
-                            <p className="text-gray-400 mt-1">{cert.issuer}</p>
-                            <p className="text-gray-500 text-sm mt-2">{cert.date}</p>
-                        </div>
-                        {cert.link && (
-                            <a href={cert.link} className="ml-auto text-gray-500 hover:text-white transition-colors">
-                                <FaExternalLinkAlt />
-                            </a>
-                        )}
-                    </motion.div>
-                ))}
-            </div>
-        </section>
-    );
-};
+  const lineHeight = useTransform(scrollYProgress, [0, 1], ["0%", "100%"]);
 
-// Helper component for link icon if needed, or import from react-icons
-const FaExternalLinkAlt = () => (
-    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-        <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
-        <polyline points="15 3 21 3 21 9"></polyline>
-        <line x1="10" y1="14" x2="21" y2="3"></line>
-    </svg>
-);
+  return (
+    <section className="py-20 px-6 md:px-20 text-white">
+      <h1 className="text-4xl font-bold mb-20 text-center bg-gradient-to-r from-purple-400 to-blue-500 bg-clip-text text-transparent">
+        My Certifications
+      </h1>
 
-export default Certificates;
+      <div ref={containerRef} className="relative max-w-5xl mx-auto">
+
+        <div className="absolute left-1/2 top-0 h-full w-0.5 bg-gray-800 -translate-x-1/2">
+          <motion.div
+            className="absolute top-0 left-0 w-full bg-gradient-to-b from-purple-500 to-blue-500"
+            style={{ height: lineHeight }}
+          />
+        </div>
+
+        <div className="space-y-13">
+          {certifications.map((cert, index) => (
+            <TimelineCard
+              key={cert.id}
+              cert={cert}
+              isLeft={index % 2 === 0}
+              index={index}
+            />
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function TimelineCard({ cert, isLeft }: TimelineCardProps) {
+  const ref = useRef(null);
+
+  return (
+    <motion.div
+      ref={ref}
+      initial={{ opacity: 0, x: isLeft ? -50 : 50 }}
+      whileInView={{ opacity: 1, x: 0 }}
+      viewport={{ once: false, margin: "-20% 0px -20% 0px" }}
+      transition={{ type: "spring", damping: 15, stiffness: 100 }}
+      className={`relative flex flex-col md:flex-row ${isLeft ? "md:flex-row" : "md:flex-row-reverse"
+        }`}
+    >
+      <div className="absolute left-1/2 top-8 -translate-x-1/2 w-6 h-6 rounded-full bg-gradient-to-br from-purple-500 to-blue-500 flex items-center justify-center z-10">
+        <FiAward className="text-white text-xs" />
+      </div>
+
+      <div className={`w-full md:w-1/2 ${isLeft ? "md:pr-16" : "md:pl-16"}`}>
+        <div className="p-6 flex justify-between items-center gap-6 rounded-xl bg-white/10 backdrop-blur-lg border border-purple-950 backdrop-saturate-150 shadow-xl">
+          <div>
+            <h3 className="text-xl font-bold mb-1">{cert.title}</h3>
+            <p className="text-purple-400 mb-3">
+              {cert.issuer} · {cert.date}
+            </p>
+            {cert.description && (
+              <p className="text-gray-300">{cert.description}</p>
+            )}
+          </div>
+
+          <div className="w-32 h-20 rounded-md overflow-hidden flex-shrink-0">
+            <Image
+              src={cert.image}
+              alt={cert.issuer}
+              width={40}
+              height={40}
+              className="w-full h-full object-cover cursor-pointer hover:scale-105 transition-transform duration-300"
+              onClick={() => window.open(cert.image, "_blank")}
+            />
+          </div>
+        </div>
+      </div>
+    </motion.div>
+  );
+}
