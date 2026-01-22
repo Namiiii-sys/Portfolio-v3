@@ -4,6 +4,7 @@ import React, { useRef } from "react";
 import { FiExternalLink } from "react-icons/fi";
 import { motion, useScroll, useTransform, MotionValue } from "framer-motion";
 import { FEATURED_PROJECTS } from "./featuredData";
+import SectionHeading from "./SectionHeading";
 
 type Project = {
   id: number;
@@ -103,14 +104,11 @@ const ProjectSection: React.FC = () => {
 
   return (
     <section className="relative text-white py-20" id="projects">
-      <div className="text-center mb-16 z-0 px-4">
-        <h1 className="text-4xl md:text-5xl font-bold bg-clip-text text-transparent bg-gradient-to-br from-white via-indigo-200 to-indigo-500 mb-4 tracking-tight">
-          Featured Work
-        </h1>
-        <p className="text-gray-400 max-w-lg mx-auto text-lg">
-          A selection of projects that showcase my passion for building.
-        </p>
-      </div>
+      <SectionHeading
+        title="Featured Work"
+        subtitle="A selection of projects that showcase my passion for building."
+        className="px-4 mb-16 text-center md:text-left max-w-4xl mx-auto"
+      />
 
       <div ref={containerRef} className="relative z-10 w-full" style={{ height: `calc(${FEATURED_PROJECTS.length * 60}vh + 50vh)` }}>
         {FEATURED_PROJECTS.map((project, index) => (

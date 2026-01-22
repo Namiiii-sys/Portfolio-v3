@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { FaReact, FaNodeJs, FaPython, FaGitAlt, FaDocker } from "react-icons/fa";
 import { SiNextdotjs, SiTailwindcss, SiTypescript, SiMongodb, SiPostgresql, SiDjango, SiFigma, SiFirebase, SiTensorflow, SiPytorch, SiCplusplus, SiStreamlit, SiFastapi, SiGreensock, SiFramer, SiVercel, SiPostman } from "react-icons/si";
+import SectionHeading from "./SectionHeading";
 
 type Category = "Frontend" | "Backend" | "ML" | "Tools";
 
@@ -44,14 +45,11 @@ const Skills = () => {
 
     return (
         <section id="skills" className="py-6 px-6 relative z-10 w-full max-w-4xl mx-auto">
-            <div className="mb-10 text-center">
-                <h2 className="text-3xl font-bold bg-clip-text text-transparent bg-gradient-to-b from-white via-indigo-100 to-indigo-500 mb-4">
-                    TECH STACK
-                </h2>
-                <p className="text-gray-400 text-sm max-w-lg mx-auto">
-                    My technical toolkit. Switch tabs to explore.
-                </p>
-            </div>
+            <SectionHeading
+                title="Expertise"
+                subtitle="My technical toolkit. Switch tabs to explore."
+                className="text-center"
+            />
 
             <div className="flex flex-col items-center">
                 <div className="flex flex-wrap justify-center gap-2 mb-10 bg-white/5 p-1.5 rounded-full border border-white/10">

@@ -5,6 +5,7 @@ import { FiArrowLeft } from "react-icons/fi";
 import Link from 'next/link';
 import Image from 'next/image';
 import { CURATED_PROJECTS } from "./projectData";
+import SectionHeading from '../components/SectionHeading';
 
 type Repo = {
     id: number;
@@ -126,13 +127,14 @@ const HeroParallax = ({ products }: { products: Product[] }) => {
 
 const Header = () => (
     <div className="max-w-7xl relative mx-auto py-20 md:py-40 px-4 w-full left-0 top-0">
-        <Link href="/" className="inline-flex items-center gap-2 text-indigo-400 hover:text-indigo-300 mb-8 transition-colors z-50 relative">
+        <Link href="/" className="inline-flex items-center gap-2 text-indigo-400 hover:text-indigo-300 mb-8 transition-colors z-50 relative font-medium">
             <FiArrowLeft /> Back to Home
         </Link>
-        <h1 className="text-2xl md:text-7xl font-bold text-white">Curated Archive</h1>
-        <p className="max-w-2xl text-base md:text-xl mt-8 text-neutral-200">
-            A hand-picked selection of my best work, powered by live GitHub data.
-        </p>
+        <SectionHeading
+            title="Detailed Archive"
+            subtitle="Everything from full stack to my experiments - whatever I've tried to get my hands dirty with."
+            className="mb-8 text-left max-w-4xl"
+        />
     </div>
 );
 

@@ -4,18 +4,16 @@ import { motion } from "framer-motion";
 import { FiGithub, FiLinkedin, FiExternalLink } from "react-icons/fi";
 import { SiLeetcode, SiGeeksforgeeks } from "react-icons/si";
 import Image from "next/image";
+import SectionHeading from "./SectionHeading";
 
 const Socials = () => {
     return (
         <section id="socials" className="py-20 px-6 md:px-12 relative z-10 w-full max-w-5xl mx-auto">
-            <div className="mb-12 text-center">
-                <h2 className="text-3xl font-bold bg-clip-text text-transparent bg-gradient-to-b from-white via-indigo-100 to-indigo-500 mb-4">
-                    CODE & CONTRIBUTIONS
-                </h2>
-                <p className="text-gray-400 max-w-xl mx-auto text-sm">
-                    Tracking activity, contributions, and network.
-                </p>
-            </div>
+            <SectionHeading
+                title="Connect"
+                subtitle="Tracking activity, contributions, and network."
+                className="text-center"
+            />
 
             <motion.div
                 initial={{ opacity: 0, y: 20 }}

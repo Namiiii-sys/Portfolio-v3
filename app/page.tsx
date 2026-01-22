@@ -6,6 +6,7 @@ import Skills from './components/Skills'
 import Socials from './components/Socials'
 import ProjectSection from './components/projects'
 import Certificates from './components/Certificates'
+import Contact from './components/Contact'
 
 const page = () => {
   return (
@@ -16,6 +17,7 @@ const page = () => {
       <ProjectSection />
       <Skills />
       <Certificates />
+      <Contact />
       <Socials />
     </div>
   )

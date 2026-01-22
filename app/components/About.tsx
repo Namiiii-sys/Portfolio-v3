@@ -7,6 +7,7 @@ import illust from '@/public/illust.png';
 import educationCap from '@/public/education-cap.png';
 import { FaReact, FaNodeJs, FaCss3Alt, FaGitAlt } from 'react-icons/fa';
 import { SiTypescript, SiNextdotjs, SiTailwindcss, SiJavascript, SiHtml5, SiPython, SiCplusplus } from 'react-icons/si';
+import SectionHeading from './SectionHeading';
 
 const About = () => {
   const techStackIcons = [
@@ -29,6 +30,13 @@ const About = () => {
       <div className="absolute top-0 left-0 w-full h-[30vh] bg-gradient-to-b from-[#020617] to-transparent z-0 pointer-events-none" />
 
       <div className="w-full md:max-w-4xl mx-auto z-10">
+
+        <SectionHeading
+          title="About Me"
+          subtitle="My creative journey and technical arsenal."
+          className="mb-12 text-center md:text-left"
+        />
+
         <div className="flex flex-col md:flex-row gap-5 md:gap-3 items-stretch">
 
           <div className="w-full md:flex-[3] flex flex-col gap-3 md:gap-3">

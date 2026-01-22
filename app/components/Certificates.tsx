@@ -4,6 +4,7 @@ import React, { useRef, useState } from "react";
 import { motion, useScroll, useTransform, AnimatePresence } from "framer-motion";
 import { FiAward } from "react-icons/fi";
 import Image from "next/image";
+import SectionHeading from "./SectionHeading";
 
 interface Certification {
   id: number;
@@ -50,22 +51,22 @@ const certifications: Record<Category, Certification[]> = {
     {
       id: 1,
       title: "Mastering Python libraries for Data Science",
-      issuer: "Coursera / Udemy",
+      issuer: "Udemy",
       date: "2024",
       image: "/cert.webp",
     },
     {
       id: 2,
       title: "Machine Learning fundamentals",
-      issuer: "Coursera / Udemy",
+      issuer: "Coursera",
       date: "2024",
       image: "/cert.webp",
     },
     {
       id: 3,
       title: "AWS cloud computing",
-      issuer: "Coursera / Udemy",
-      date: "2024",
+      issuer: "FreeCodeCamp",
+      date: "2025",
       image: "/cert.webp",
     }
   ]
@@ -83,9 +84,11 @@ export default function Certifications() {
 
   return (
     <section className="py-10 px-6 md:px-20 text-white">
-      <h1 className="text-4xl font-bold mb-20 text-center bg-clip-text text-transparent bg-gradient-to-b from-white via-indigo-100 to-indigo-500">
-        MY CERTIFICATIONS
-      </h1>
+      <SectionHeading
+        title="Certifications"
+        subtitle="Learning and professional achievements."
+        className="mb-12 text-center md:text-left max-w-4xl mx-auto"
+      />
 
       <div className="flex justify-center gap-2 mb-12">
         {(Object.keys(certifications) as Category[]).map((tab) => (
