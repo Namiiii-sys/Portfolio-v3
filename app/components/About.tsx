@@ -25,7 +25,7 @@ const About = () => {
   ];
 
   return (
-    <section className="relative min-h-screen flex items-center justify-center px-4 md:px-15 py-8 sm:py-20 sm:px-20 overflow-hidden">
+    <section id="about" className="relative min-h-screen flex items-center justify-center px-4 md:px-15 py-8 sm:py-20 sm:px-20 overflow-hidden">
 
       <div className="absolute top-0 left-0 w-full h-[30vh] bg-gradient-to-b from-[#020617] to-transparent z-0 pointer-events-none" />
 

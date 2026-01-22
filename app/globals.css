@@ -7,7 +7,6 @@
 
 body {
   background: #050014;
-  /* Deep cosmic base */
   color: var(--foreground);
   font-family: var(--font-geist-sans), Arial, Helvetica, sans-serif;
   min-height: 100vh;

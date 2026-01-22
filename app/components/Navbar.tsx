@@ -32,8 +32,8 @@ const Navbar = () => {
   const links = [
     { name: "Home", href: "/" },
     { name: "About", href: "/#about" },
-    { name: "Projects", href: "/projects" },
-    { name: "Contact", href: "/#socials" },
+    { name: "Projects", href: "/#projects" },
+    { name: "Contact", href: "/#contact" },
   ];
 
   return (
@@ -111,7 +111,7 @@ const Navbar = () => {
               priority
             />
             <h1 className="text-lg font-bold">Namita Mehra</h1>
-            <p className="text-sm text-gray-400">Frontend Developer</p>
+            <p className="text-sm text-gray-400">Full Stack Developer</p>
           </div>
 
           <div className="space-y-5 p-4 mt-10 font-semibold">

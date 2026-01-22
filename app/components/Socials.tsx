@@ -26,11 +26,11 @@ const Socials = () => {
                     <div className="flex items-center justify-between mb-6">
                         <div className="flex items-center gap-3">
                             <FiGithub className="text-2xl text-white/80" />
-                            <h3 className="text-lg font-semibold text-white/90">Contribution Graph</h3>
+                            <h3 className="text-xl font-semibold text-white/90">Contribution Graph</h3>
                         </div>
                         <div className="flex items-center gap-2 px-3 py-1 rounded-full bg-violet-500/10 border border-violet-500/20">
                             <span className="w-1.5 h-1.5 rounded-full bg-violet-500 animate-pulse" />
-                            <span className="text-xs font-medium text-violet-500">LIVE</span>
+                            <span className="text-sm font-medium text-violet-500">LIVE</span>
                         </div>
                     </div>
 
@@ -50,7 +50,7 @@ const Socials = () => {
 
                     {/* Column 1: Github Stats */}
                     <div className="p-6 flex flex-col items-center justify-start h-full hover:bg-white/[0.02] transition-colors">
-                        <h4 className="text-xs text-gray-500 uppercase tracking-widest font-semibold mb-8">Github Overview</h4>
+                        <h4 className="text-sm text-gray-500 uppercase tracking-widest font-semibold mb-8">Github Overview</h4>
                         <div className="w-full max-w-[300px]">
                             <Image
                                 src="https://github-readme-stats.vercel.app/api?username=Namiiii-sys&show_icons=true&theme=transparent&hide_border=true&title_color=ffffff&text_color=9ca3af&icon_color=8b5cf6&count_private=true&hide_rank=true"
@@ -65,7 +65,7 @@ const Socials = () => {
 
                     {/* Column 2: LeetCode Stats */}
                     <div className="p-6 flex flex-col items-center justify-start h-full hover:bg-white/[0.02] transition-colors">
-                        <h4 className="text-xs text-gray-500 uppercase tracking-widest font-semibold mb-8">LeetCode Analysis</h4>
+                        <h4 className="text-sm text-gray-500 uppercase tracking-widest font-semibold mb-8">LeetCode Analysis</h4>
                         <div className="w-full max-w-[300px]">
                             <Image
                                 src="https://leetcard.jacoblin.cool/Namiiii-sys?theme=dark&font=geist-sans"
@@ -80,7 +80,7 @@ const Socials = () => {
 
                     {/* Column 3: Social Profiles */}
                     <div className="p-6 flex flex-col items-center justify-start h-full hover:bg-white/[0.02] transition-colors">
-                        <h4 className="text-xs text-gray-500 uppercase tracking-widest font-semibold mb-8">Network</h4>
+                        <h4 className="text-sm text-gray-500 uppercase tracking-widest font-semibold mb-8">Network</h4>
                         <div className="grid grid-cols-2 gap-2 w-full max-w-[200px]">
                             <SocialButton
                                 icon={<FiLinkedin />}
