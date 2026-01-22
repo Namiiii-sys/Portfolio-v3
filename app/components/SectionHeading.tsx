@@ -15,7 +15,7 @@ const SectionHeading: React.FC<SectionHeadingProps> = ({ title, subtitle, classN
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5 }}
-                className="text-5xl md:text-7xl font-bold tracking-tighter text-transparent bg-clip-text bg-gradient-to-b from-white to-white/10 mb-6 uppercase"
+                className="text-5xl md:text-6xl font-bold tracking-tighter text-transparent bg-clip-text bg-gradient-to-b from-white to-white/10 mb-6 uppercase"
             >
                 {title}
             </motion.h2>
