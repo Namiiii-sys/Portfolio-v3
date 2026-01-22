@@ -1,0 +1,17 @@
+export const CURATED_PROJECTS = [
+    { repoName: "Delhi-aqi-forecast", thumbnail: "/delhiaqi.png", LiveLink: "delhi-aqi-forecast.vercel.app" },
+    { repoName: "RentoAI", thumbnail: "/rentoai.png", LiveLink: "rentoai.vercel.app" },
+    { repoName: "Youtube-Rag-bot", thumbnail: "/portfolio.png", LiveLink: "youtube-rag-bot.vercel.app" },
+    { repoName: "Swiftpass", thumbnail: "/swiftpass.png", LiveLink: "swiftpass-red.vercel.app" },
+    { repoName: "Sharedex", thumbnail: "/sharedex.png", LiveLink: "sharedex.vercel.app" },
+    { repoName: "Habilite", thumbnail: "/habilite.png", LiveLink: "habilite.vercel.app" },
+    { repoName: "Portfolio-v3", thumbnail: "/portfolio.png", LiveLink: "namita-portfolio.vercel.app" },
+    { repoName: "Handpaint", thumbnail: "/handpaint.png", LiveLink: "handpaint.vercel.app" },
+    { repoName: "Success-Drivers-for-Github-Repo-Prediction-Model ", thumbnail: "/portfolio.png", LiveLink: "success-drivers-for-github-repo-prediction-model.vercel.app" },
+    { repoName: "ByteBounce", thumbnail: "/bytebounce.png", LiveLink: "bytebounce.vercel.app" },
+    { repoName: "mental-health-bot", thumbnail: "/portfolio.png", LiveLink: "mental-health-bot.vercel.app" },
+    { repoName: "Confession", thumbnail: "/confession.png", LiveLink: "confession-wheat.vercel.app" },
+    { repoName: "Quirkycart", thumbnail: "/Quirkycart.png", LiveLink: "quirkycart.vercel.app" },
+    { repoName: "Classroom-clone", thumbnail: "/classroom-clone.png", LiveLink: "joineazy-frontend.vercel.app" },
+    { repoName: "Roast-me-ai", thumbnail: "/roastmeai.png", LiveLink: "roast-me-ai-nine.vercel.app" },
+];

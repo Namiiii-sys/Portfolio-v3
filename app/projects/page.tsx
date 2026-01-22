@@ -1,37 +1,10 @@
 "use client";
 import React, { useRef, useState, useEffect } from "react";
 import { motion, useScroll, useTransform, useSpring, MotionValue } from "framer-motion";
-import { FiArrowLeft, FiGithub, FiExternalLink } from "react-icons/fi";
+import { FiArrowLeft } from "react-icons/fi";
 import Link from 'next/link';
 import Image from 'next/image';
-
-// --- CONFIGURATION START ---
-
-// TODO: User will provide the list of 15 repos and their images.
-// This array controls the EXACT order of the projects on the page.
-const CURATED_PROJECTS = [
-    // Example format:
-    // { repoName: "Exact-GitHub-Repo-Name", thumbnail: "/path-to-image.png", titleOverride: "Optional Custom Title" },
-
-    // Placeholder Data (Will be replaced by user input)
-    { repoName: "Youtube-Rag-bot", thumbnail: "/portfolio.png.png", LiveLink: "youtube-rag-bot.vercel.app" },
-    { repoName: "RentoAI", thumbnail: "/rentoai.png", LiveLink: "rentoai.vercel.app" },
-    { repoName: "Sharedex", thumbnail: "/sharedex.png", LiveLink: "sharedex.vercel.app" },
-    { repoName: "Swiftpass", thumbnail: "/swiftpass.png", LiveLink: "swiftpass-red.vercel.app" },
-    { repoName: "success-drivers-for-github-repo-prediction-model", thumbnail: "/sharedex.png", LiveLink: "sharedex.vercel.app" },
-    { repoName: "Habilite", thumbnail: "/habilite.png", LiveLink: "habilite.vercel.app" },
-    { repoName: "Portfolio-v3", thumbnail: "/portfolio.png", LiveLink: "namita-portfolio.vercel.app" },
-    { repoName: "Handpaint", thumbnail: "/handpaint.png", LiveLink: "handpaint.vercel.app" },
-    { repoName: "Delhi-aqi-forecast", thumbnail: "/delhiaqi.png", LiveLink: "delhi-aqi-forecast.vercel.app" },
-    { repoName: "ByteBounce", thumbnail: "/bytebounce.png", LiveLink: "bytebounce.vercel.app" },
-    { repoName: "mental-health-bot", thumbnail: "/portfolio.png.png", LiveLink: "mental-health-bot.vercel.app" },
-    { repoName: "Confession", thumbnail: "/confession.png", LiveLink: "confession-wheat.vercel.app" },
-    { repoName: "Quirkycart", thumbnail: "/Quirkycart.png", LiveLink: "quirkycart.vercel.app" },
-    { repoName: "Classroom-clone", thumbnail: "/classroom-clone.png", LiveLink: "joineazy-frontend.vercel.app" },
-    { repoName: "Roast-me-ai", thumbnail: "/roastmeai.png", LiveLink: "roast-me-ai-nine.vercel.app" },
-];
-
-// --- CONFIGURATION END ---
+import { CURATED_PROJECTS } from "./projectData";
 
 type Repo = {
     id: number;
@@ -76,7 +49,7 @@ const ProjectsPage = () => {
                     }
 
                     return {
-                        title: config.titleOverride || (repo ? repo.name : config.repoName),
+                        title: repo ? repo.name : config.repoName,
                         thumbnail: config.thumbnail,
                         link: primaryLink,
                         description: repo ? (repo.description || "No description available.") : "Fetching details...",
@@ -119,6 +92,7 @@ const HeroParallax = ({ products }: { products: Product[] }) => {
     const { scrollYProgress } = useScroll({ target: ref, offset: ["start start", "end start"] });
 
     const springConfig = { stiffness: 300, damping: 30, bounce: 100 };
+
     const translateX = useSpring(useTransform(scrollYProgress, [0, 1], [0, 1000]), springConfig);
     const translateXReverse = useSpring(useTransform(scrollYProgress, [0, 1], [0, -1000]), springConfig);
     const rotateX = useSpring(useTransform(scrollYProgress, [0, 0.2], [15, 0]), springConfig);
@@ -131,13 +105,19 @@ const HeroParallax = ({ products }: { products: Product[] }) => {
             <Header />
             <motion.div style={{ rotateX, rotateZ, translateY, opacity }} className="">
                 <motion.div className="flex flex-row-reverse space-x-reverse space-x-20 mb-20">
-                    {firstRow.map((product, idx) => <ProductCard product={product} translate={{ x: translateX }} key={idx} />)}
+                    {firstRow.map((product, idx) => (
+                        <ProductCard product={product} translate={{ x: translateX }} key={idx} />
+                    ))}
                 </motion.div>
                 <motion.div className="flex flex-row space-x-20 mb-20">
-                    {secondRow.map((product, idx) => <ProductCard product={product} translate={{ x: translateXReverse }} key={idx} />)}
+                    {secondRow.map((product, idx) => (
+                        <ProductCard product={product} translate={{ x: translateXReverse }} key={idx} />
+                    ))}
                 </motion.div>
                 <motion.div className="flex flex-row-reverse space-x-reverse space-x-20">
-                    {thirdRow.map((product, idx) => <ProductCard product={product} translate={{ x: translateX }} key={idx} />)}
+                    {thirdRow.map((product, idx) => (
+                        <ProductCard product={product} translate={{ x: translateX }} key={idx} />
+                    ))}
                 </motion.div>
             </motion.div>
         </div>
@@ -165,11 +145,20 @@ const ProductCard = ({ product, translate }: { product: Product; translate: { x:
         <Link href={product.link} target="_blank" className="block group-hover/product:shadow-2xl">
             <div className="absolute inset-0 h-full w-full bg-black pointer-events-none opacity-0 group-hover/product:opacity-50 transition-opacity z-10" />
             <div className="object-cover object-left-top absolute h-full w-full inset-0 bg-gray-900 rounded-xl overflow-hidden border border-white/10">
-                <Image src={product.thumbnail} alt={product.title} fill className="object-contain object-center opacity-80 group-hover:opacity-100 transition-opacity p-4" />
+                <Image
+                    src={product.thumbnail}
+                    alt={product.title}
+                    fill
+                    className="object-contain object-center opacity-80 group-hover:opacity-100 transition-opacity p-4"
+                />
             </div>
             <div className="absolute bottom-4 left-4 opacity-0 group-hover/product:opacity-100 z-20 transition-opacity p-4">
                 <h2 className="text-white font-bold text-2xl mb-1">{product.title}</h2>
-                {product.language && <span className="text-xs font-mono text-indigo-300 bg-indigo-500/10 px-2 py-1 rounded mb-2 inline-block">{product.language}</span>}
+                {product.language && (
+                    <span className="text-xs font-mono text-indigo-300 bg-indigo-500/10 px-2 py-1 rounded mb-2 inline-block">
+                        {product.language}
+                    </span>
+                )}
                 <p className="text-gray-300 text-sm line-clamp-2">{product.description}</p>
             </div>
         </Link>
