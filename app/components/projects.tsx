@@ -71,19 +71,19 @@ const ProjectCard: React.FC<{
         zIndex: index + 1,
       }}
     >
-      <article className="w-[90%] md:w-2/3 max-w-4xl bg-gradient-to-br from-indigo-950/90 to-purple-950/80 backdrop-blur-3xl border border-white/10 rounded-3xl p-6 flex flex-col items-center shadow-2xl hover:shadow-purple-500/20 transition-shadow duration-500 relative overflow-hidden group">
+      <article className="w-[80%] md:w-2/3 max-w-3xl bg-gradient-to-br from-indigo-950/90 to-purple-950/80 backdrop-blur-3xl border border-white/10 rounded-3xl p-3 flex flex-col items-center shadow-2xl hover:shadow-purple-500/20 transition-shadow duration-500 relative overflow-hidden group">
         <div className="absolute top-0 -left-1/2 w-full h-full bg-blue-500/20 blur-[120px] rounded-full pointer-events-none group-hover:bg-blue-500/30 transition-all duration-500" />
-        <div className="absolute bottom-0 -right-1/2 w-full h-full bg-purple-500/20 blur-[120px] rounded-full pointer-events-none group-hover:bg-purple-500/30 transition-all duration-500" />
+        <div className="absolute bottom-0 -right-1/2 w-full h-full bg-purple-500/20 blur-[120px] pointer-events-none group-hover:bg-purple-500/30 transition-all duration-500" />
 
-        <div className="relative w-full aspect-video rounded-2xl overflow-hidden mb-5 shadow-xl border border-white/5">
-          <div className="absolute inset-0 bg-indigo-500/10 mix-blend-overlay z-10" />
+        <div className="relative w-full aspect-video overflow-hidden mb-5">
+          <div className="absolute inset-0 z-10 border border-white/5 rounded-2xl" />
           <motion.video
             src={project.video}
             loop
             muted
             autoPlay
             playsInline
-            className="w-full h-full object-cover"
+            className="w-[80%] mx-auto h-full object-cover"
           />
           <div className="absolute bottom-3 left-3 flex flex-wrap gap-2 z-20">
             {project.techStack.map((tech, idx) => (

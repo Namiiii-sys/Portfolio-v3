@@ -102,7 +102,7 @@ export default function Certifications() {
         ))}
       </div>
 
-      <div ref={containerRef} className="relative max-w-5xl mx-auto min-h-[400px]">
+      <div ref={containerRef} className="relative max-w-4xl mx-auto min-h-[400px]">
 
         <div className="absolute left-1/2 top-0 h-full w-0.5 bg-gray-800 -translate-x-1/2">
           <motion.div
@@ -111,7 +111,7 @@ export default function Certifications() {
           />
         </div>
 
-        <div className="space-y-12">
+        <div className="space-y-10">
           <AnimatePresence mode="wait">
             {certifications[activeTab].map((cert, index) => (
               <TimelineCard

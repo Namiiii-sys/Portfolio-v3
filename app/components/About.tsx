@@ -4,6 +4,7 @@ import { motion } from 'framer-motion';
 import Image from 'next/image';
 import icon3 from '@/public/icon3.webp';
 import illust from '@/public/illust.png';
+import educationCap from '@/public/education-cap.png';
 import { FaReact, FaNodeJs, FaCss3Alt, FaGitAlt } from 'react-icons/fa';
 import { SiTypescript, SiNextdotjs, SiTailwindcss, SiJavascript, SiHtml5, SiPython, SiCplusplus } from 'react-icons/si';
 
@@ -23,43 +24,42 @@ const About = () => {
   ];
 
   return (
-    <section className="relative min-h-screen flex items-center justify-center px-4 md:px-15 py-10 sm:py-20 sm:px-20 overflow-hidden">
-      {/* Continuity Gradient from Hero */}
+    <section className="relative min-h-screen flex items-center justify-center px-4 md:px-15 py-8 sm:py-20 sm:px-20 overflow-hidden">
+
       <div className="absolute top-0 left-0 w-full h-[30vh] bg-gradient-to-b from-[#020617] to-transparent z-0 pointer-events-none" />
 
       <div className="w-full md:max-w-4xl mx-auto z-10">
         <div className="flex flex-col md:flex-row gap-5 md:gap-3 items-stretch">
 
-          <div className="w-full md:flex-[3] flex flex-col gap-4 md:gap-4">
+          <div className="w-full md:flex-[3] flex flex-col gap-3 md:gap-3">
             <div className="flex flex-col sm:flex-row gap-5 md:gap-3">
               <motion.div
-                className="w-full sm:w-1/2 min-h-[15rem] bg-white/5 backdrop-blur-lg rounded-xl border border-white/10 shadow-lg shadow-black/30 hover:shadow-xl hover:shadow-purple-400/20 transition-all duration-300"
+                className="w-full sm:w-1/2 min-h-[10rem] bg-white/5 backdrop-blur-lg rounded-xl border border-white/10 shadow-lg shadow-black/30 hover:shadow-xl hover:shadow-purple-400/20 transition-all duration-300"
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: 0.2 }}>
-                <div className='p-6 h-full flex flex-col'>
+                <div className='p-4 h-full flex flex-col'>
                   <Image
                     src={icon3}
                     alt=""
                     width={80}
                     height={80}
                     className='mx-auto bg-gradient-to-r from-[#0f172a] to-[#351355] rounded-lg' />
-                  <div className='flex-grow flex flex-col justify-between pt-4'>
+                  <div className='flex-grow flex flex-col justify-between pt-2'>
                     <div>
                       <h1 className='text-white font-semibold font-mono text-lg'>
                         {`Hi There, I'm`}
                         <span className='text-indigo-500'>{` NAMITA.`}</span>
                       </h1>
                     </div>
-                    <p className='text-sm text-gray-300 mt-2 line-clamp-3'>
-                      Passionate frontend developer creating responsive web experiences with modern technologies.
-                      Specializing in React and UI/UX design.
+                    <p className='text-sm text-gray-300 mt-2'>
+                      Full Stack Developer building scalable web apps. Deeply passionate about integrating Machine Learning and AI to create smarter digital experiences.
                     </p>
                   </div>
                 </div>
               </motion.div>
               <motion.div
-                className="w-full sm:w-1/2 min-h-[15rem] bg-white/5 backdrop-blur-lg rounded-xl border border-white/10 shadow-lg shadow-black/30 hover:shadow-xl hover:shadow-purple-400/20 transition-all duration-300"
+                className="w-full sm:w-1/2 min-h-[10rem] bg-white/5 backdrop-blur-lg rounded-xl border border-white/10 shadow-lg shadow-black/30 hover:shadow-xl hover:shadow-purple-400/20 transition-all duration-300"
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: 0.2 }}>
@@ -67,19 +67,18 @@ const About = () => {
                   <Image
                     src={illust}
                     alt=""
-                    width={120}
-                    height={150}
+                    width={100}
+                    height={100}
                     className='mx-auto ' />
                   <div className='flex-grow flex flex-col justify-between pt-4'>
                     <div>
                       <h1 className='text-white font-semibold font-mono text-lg'>
                         {`MY`}
-                        <span className='text-indigo-500'>{` SKILLS.`}</span>
+                        <span className='text-indigo-500'>{` ARSENAL.`}</span>
                       </h1>
                     </div>
-                    <p className='text-sm text-gray-300 mt-2 line-clamp-3'>
-                      Passionate full stack developer creating responsive web experiences with modern technologies.
-                      Specializing in React and UI/UX design.
+                    <p className='text-sm text-gray-300 mt-2'>
+                      Specialized in MERN & Next.js for robust solutions. Expanding into more of Python & Machine learning to build intelligent, data-driven systems.
                     </p>
                   </div>
                 </div>
@@ -87,27 +86,26 @@ const About = () => {
             </div>
 
             <motion.div
-              className="min-h-[15rem] w-full bg-white/5 backdrop-blur-lg rounded-xl border border-white/10 shadow-lg shadow-black/30 hover:shadow-xl hover:shadow-purple-400/20 transition-all duration-300"
+              className="min-h-[10rem] w-full bg-white/5 backdrop-blur-lg rounded-xl border border-white/10 shadow-lg shadow-black/30 hover:shadow-xl hover:shadow-purple-400/20 transition-all duration-300"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.4 }}
             >
-              <div className='p-6 flex h-full'>
-                <div className="w-1/2 flex flex-col justify-center pr-4">
+              <div className='p-4 flex h-full'>
+                <div className="w-1/2 flex flex-col justify-center pl-2">
                   <h1 className='text-white font-semibold text-xl'>
-                    MY PASSION FOR <span className='text-indigo-500'>CODING.</span>
+                    EDUCATION <span className='text-indigo-500'>BACKGROUND.</span>
                   </h1>
-                  <p className='text-sm text-gray-300 mt-3'>
-                    I have a deep passion for coding and creating beautiful, functional user interfaces.
-                    I love turning ideas into reality through programming.
+                  <p className='text-sm text-gray-300 mt-2'>
+                    Pursuing B.Sc (Hons) Computer Science at Shaheed Sukhdev College of Business Studies, DU. 2nd Year (Class of '27) with 8.27 CGPA.
                   </p>
                 </div>
                 <div className="w-1/2 flex items-center justify-center">
                   <Image
-                    src={illust}
-                    alt="Coding passion illustration"
-                    width={200}
-                    height={200}
+                    src={educationCap}
+                    alt="Education Cap"
+                    width={150}
+                    height={150}
                     className='object-contain'
                   />
                 </div>
@@ -116,12 +114,12 @@ const About = () => {
           </div>
 
           <motion.div
-            className="w-full md:flex-[2] min-h-[20rem] bg-white/5 backdrop-blur-lg rounded-xl border border-white/10 shadow-lg shadow-black/30 hover:shadow-xl hover:shadow-purple-400/20 transition-all duration-300"
+            className="w-full md:flex-[2] min-h-[15rem] bg-white/5 backdrop-blur-lg rounded-xl border border-white/10 shadow-lg shadow-black/30 hover:shadow-xl hover:shadow-purple-400/20 transition-all duration-300"
             initial={{ opacity: 0, x: 20 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.5, delay: 0.5 }}
           >
-            <div className='p-6 h-full flex flex-col items-center justify-center'>
+            <div className='p-4 h-full flex flex-col items-center justify-center'>
               <h1 className='text-white font-semibold text-2xl mb-6'>TECH <span className='text-indigo-500'>STACK</span></h1>
 
               <div className="relative h-64 w-64 mb-5">
