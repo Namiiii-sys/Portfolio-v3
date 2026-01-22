@@ -23,7 +23,7 @@ export const FEATURED_PROJECTS = [
     {
         id: 4,
         title: "Delhi-Aqi-forecast - Air Quality Forecasting app",
-        video: "/aqi.mp4",
+        video: "/delhi-aqi.mp4",
         desc: "A creative e-commerce web app with user-friendly UI, smooth checkout, and Django-powered backend.",
         techStack: ["Python", "streamlit", "Machine-Learning"],
     },
