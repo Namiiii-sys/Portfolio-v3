@@ -15,8 +15,22 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Namita Mehra | Full Stack Developer",
-  description: "Portfolio of Namita Mehra, a Full Stack Developer specializing in modern web technologies and AI.",
+  title: "Namita Mehra | Full Stack Developer & AI Enthusiast",
+  description: "Portfolio of Namita Mehra, a Full Stack Developer building scalable web apps and intelligent AI systems. Specializing in Next.js, React, and Machine Learning.",
+  keywords: ["Full Stack Developer", "Next.js", "React", "AI", "Machine Learning", "Web Development", "Python", "Software Engineer"],
+  openGraph: {
+    title: "Namita Mehra | Full Stack Developer & AI Enthusiast",
+    description: "Building scalable web apps and intelligent AI systems.",
+    type: "website",
+    locale: "en_US",
+    url: "https://namitamehra.com", // Placeholder, good practice
+    siteName: "Namita Mehra Portfolio",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Namita Mehra | Full Stack Developer",
+    description: "Building scalable web apps and intelligent AI systems.",
+  },
 };
 
 export default function RootLayout({

@@ -10,6 +10,7 @@ type Project = {
   id: number;
   title: string;
   video: string;
+  poster?: string;
   desc: string;
   techStack: string[];
 };
@@ -53,6 +54,7 @@ const ProjectCard: React.FC<{
           <div className="absolute inset-0 z-10 border border-white/5 rounded-2xl pointer-events-none" />
           <motion.video
             src={project.video}
+            poster={project.poster}
             loop
             muted
             autoPlay

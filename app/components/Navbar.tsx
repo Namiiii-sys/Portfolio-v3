@@ -48,6 +48,7 @@ const Navbar = () => {
             height={40}
             className="w-[40px] h-[40px] rounded-full border border-white mb-2 object-cover mt-2"
             priority
+            placeholder="blur"
           /> <span className="text-white">|| Full Stack Developer</span>
         </div>
 

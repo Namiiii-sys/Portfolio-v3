@@ -52,6 +52,7 @@ const About = () => {
                     alt=""
                     width={80}
                     height={80}
+                    placeholder="blur"
                     className='mx-auto bg-gradient-to-r from-[#0f172a] to-[#351355] rounded-lg' />
                   <div className='flex-grow flex flex-col justify-between pt-2'>
                     <div>
@@ -77,6 +78,7 @@ const About = () => {
                     alt=""
                     width={100}
                     height={100}
+                    placeholder="blur"
                     className='mx-auto ' />
                   <div className='flex-grow flex flex-col justify-between pt-4'>
                     <div>
@@ -114,6 +116,7 @@ const About = () => {
                     alt="Education Cap"
                     width={150}
                     height={150}
+                    placeholder="blur"
                     className='object-contain'
                   />
                 </div>
