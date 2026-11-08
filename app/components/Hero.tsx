@@ -128,7 +128,7 @@ const Hero = () => {
         }}
       />
 
-      <div className="absolute inset-0 z-60 pointer-events-none opacity-20 bg-[url('/noise.svg')] mix-blend-overlay" />
+      <div className="absolute inset-0 z-60 pointer-events-none opacity-[0.05] bg-[url('/noise.svg')] mix-blend-overlay" />
 
 
 
