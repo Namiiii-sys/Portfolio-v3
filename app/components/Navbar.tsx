@@ -1,5 +1,5 @@
 "use client";
-import React, { useLayoutEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { FiMenu, FiX, FiGithub, FiLinkedin } from "react-icons/fi";
 import Image from "next/image";
 import namita from "@/public/Namita.jpg";
@@ -8,7 +8,7 @@ import { gsap } from "gsap";
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
 
-  useLayoutEffect(() => {
+  useEffect(() => {
     const ctx = gsap.context(() => {
       const tl = gsap.timeline();
       tl.from(".navbar-item", {
@@ -57,7 +57,7 @@ const Navbar = () => {
             <a
               key={link.name}
               href={link.href}
-              className="nav-link relative px-4 py-2 text-white after:absolute after:bottom-0 after:left-1/2 after:w-0 after:h-[2px] after:bg-indigo-800 after:transition-all after:duration-300 hover:after:w-full hover:after:left-0"
+              className="nav-link relative px-4 py-2 text-white hover:text-indigo-200 transition-colors duration-200 after:absolute after:bottom-0 after:left-1/2 after:w-0 after:h-[2px] after:bg-indigo-400 after:transition-all after:duration-300 hover:after:w-full hover:after:left-0"
             >
               {link.name}
             </a>
@@ -69,28 +69,33 @@ const Navbar = () => {
             href="https://www.linkedin.com/in/namita-mh"
             target="_blank"
             rel="noopener noreferrer"
+            aria-label="LinkedIn Profile"
           >
             <FiLinkedin
               size={24}
-              className="inline-block mr-4 text-black hover:text-black px-1 transition-colors fill-black bg-white"
+              className="inline-block mr-4 text-black hover:opacity-80 transition-opacity px-1 fill-black bg-white"
             />
           </a>
           <a
             href="https://github.com/Namiiii-sys"
             target="_blank"
             rel="noopener noreferrer"
+            aria-label="GitHub Profile"
           >
             <FiGithub
               size={24}
-              className="inline-block mr-4 bg-white rounded-full px-1 pt-1 text-gray-800 fill-black"
+              className="inline-block mr-4 bg-white rounded-full px-1 pt-1 text-gray-800 fill-black hover:opacity-80 transition-opacity"
             />
           </a>
         </div>
       </div>
 
-      {/* mobile menu */}
+      {/* Mobile toggle button */}
       <div className="navbar-container md:hidden py-4 px-6 flex justify-end fixed top-0 left-0 w-full bg-[#0f0f0f] shadow-lg z-10">
-        <button onClick={() => setIsOpen(!isOpen)}>
+        <button
+          onClick={() => setIsOpen(!isOpen)}
+          aria-label={isOpen ? "Close menu" : "Open menu"}
+        >
           {isOpen ? (
             <FiX size={24} className="text-white" />
           ) : (
@@ -101,56 +106,66 @@ const Navbar = () => {
 
       {/* Mobile Menu */}
       {isOpen && (
-        <div className="fixed top-0 left-0 h-screen w-3/5 bg-gradient-to-b from-[#0f0f0f] to-[#100e2f] z-40 shadow-lg text-white px-6 py-8 overflow-auto">
-          <div className="flex flex-col items-start p-4 mb-6">
-            <Image
-              src={namita}
-              alt="Namita Mehra"
-              width={60}
-              height={60}
-              className="w-[60px] h-[60px] rounded-full border border-white mb-2 object-cover"
-              priority
-            />
-            <h1 className="text-lg font-bold">Namita Mehra</h1>
-            <p className="text-sm text-gray-400">Full Stack Developer</p>
-          </div>
+        <>
+          {/* Backdrop — clicking outside closes the menu */}
+          <div
+            className="fixed inset-0 bg-black/50 z-30"
+            onClick={() => setIsOpen(false)}
+            aria-hidden="true"
+          />
+          <div className="fixed top-0 left-0 h-screen w-3/5 bg-gradient-to-b from-[#0f0f0f] to-[#100e2f] z-40 shadow-lg text-white px-6 py-8 overflow-auto">
+            <div className="flex flex-col items-start p-4 mb-6">
+              <Image
+                src={namita}
+                alt="Namita Mehra"
+                width={60}
+                height={60}
+                className="w-[60px] h-[60px] rounded-full border border-white mb-2 object-cover"
+                priority
+              />
+              <h1 className="text-lg font-bold">Namita Mehra</h1>
+              <p className="text-sm text-gray-400">Full Stack Developer</p>
+            </div>
 
-          <div className="space-y-5 p-4 mt-10 font-semibold">
-            {links.map((link) => (
-              <a
-                key={link.name}
-                href={link.href}
-                onClick={() => setIsOpen(false)}
-                className="block px-4 py-2 hover:text-indigo-800 rounded transition-all"
-              >
-                {link.name}
-              </a>
-            ))}
+            <div className="space-y-5 p-4 mt-10 font-semibold">
+              {links.map((link) => (
+                <a
+                  key={link.name}
+                  href={link.href}
+                  onClick={() => setIsOpen(false)}
+                  className="block px-4 py-2 hover:text-indigo-400 rounded transition-colors duration-200"
+                >
+                  {link.name}
+                </a>
+              ))}
 
-            <div className="flex justify-start p-4 mt-8 place-items-baseline">
-              <a
-                href="https://www.linkedin.com/in/namita-mh"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <FiLinkedin
-                  size={24}
-                  className="inline-block mr-4 text-black hover:text-black px-1 transition-colors fill-black bg-white"
-                />
-              </a>
-              <a
-                href="https://github.com/Namiiii-sys"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <FiGithub
-                  size={24}
-                  className="inline-block mr-4 bg-white rounded-full px-1 pt-1 text-gray-800 fill-black"
-                />
-              </a>
+              <div className="flex justify-start p-4 mt-8 items-center gap-2">
+                <a
+                  href="https://www.linkedin.com/in/namita-mh"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="LinkedIn Profile"
+                >
+                  <FiLinkedin
+                    size={24}
+                    className="inline-block mr-4 text-black px-1 fill-black bg-white hover:opacity-80 transition-opacity"
+                  />
+                </a>
+                <a
+                  href="https://github.com/Namiiii-sys"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="GitHub Profile"
+                >
+                  <FiGithub
+                    size={24}
+                    className="inline-block mr-4 bg-white rounded-full px-1 pt-1 text-gray-800 fill-black hover:opacity-80 transition-opacity"
+                  />
+                </a>
+              </div>
             </div>
           </div>
-        </div>
+        </>
       )}
     </nav>
   );

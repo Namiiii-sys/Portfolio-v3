@@ -9,6 +9,20 @@ import { FaReact, FaNodeJs, FaCss3Alt, FaGitAlt } from 'react-icons/fa';
 import { SiTypescript, SiNextdotjs, SiTailwindcss, SiJavascript, SiHtml5, SiPython, SiCplusplus } from 'react-icons/si';
 import SectionHeading from './SectionHeading';
 
+const TECH_POSITIONS = [
+  { x: 90, y: 0 },
+  { x: 76, y: 49 },
+  { x: 37, y: 82 },
+  { x: -13, y: 89 },
+  { x: -59, y: 68 },
+  { x: -86, y: 25 },
+  { x: -86, y: -25 },
+  { x: -59, y: -68 },
+  { x: -13, y: -89 },
+  { x: 37, y: -82 },
+  { x: 76, y: -49 },
+];
+
 const About = () => {
   const techStackIcons = [
     { icon: FaReact, name: 'React' },
@@ -49,7 +63,7 @@ const About = () => {
                 <div className='p-4 h-full flex flex-col'>
                   <Image
                     src={icon3}
-                    alt=""
+                    alt="Namita Mehra Avatar"
                     width={80}
                     height={80}
                     placeholder="blur"
@@ -88,7 +102,7 @@ const About = () => {
                       </h1>
                     </div>
                     <p className='text-sm text-gray-300 mt-2'>
-                      Specialized in MERN & Next.js for robust solutions. Expanding into more of Python & Machine learning to build intelligent, data-driven systems.
+                      Specialized in MERN & Next.js for robust solutions. Expanding into Python & Machine Learning to build intelligent, data-driven systems.
                     </p>
                   </div>
                 </div>
@@ -153,26 +167,25 @@ const About = () => {
                   }}
                 >
                   {techStackIcons.map((tech, index) => {
-                    const angle = (index / techStackIcons.length) * 360;
-                    const radius = 90;
-                    const x = radius * Math.cos((angle * Math.PI) / 180);
-                    const y = radius * Math.sin((angle * Math.PI) / 180);
+                    const pos = TECH_POSITIONS[index] || { x: 0, y: 0 };
+                    const leftStr = pos.x >= 0 ? `calc(50% + ${pos.x}px)` : `calc(50% - ${Math.abs(pos.x)}px)`;
+                    const topStr = pos.y >= 0 ? `calc(50% + ${pos.y}px)` : `calc(50% - ${Math.abs(pos.y)}px)`;
 
                     return (
-                      <motion.div
-                        key={index}
+                      <div
+                        key={tech.name}
                         className="absolute w-10 h-10 flex items-center justify-center"
                         style={{
-                          left: `calc(50% + ${x}px)`,
-                          top: `calc(50% + ${y}px)`,
+                          left: leftStr,
+                          top: topStr,
                           transform: 'translate(-50%, -50%)',
                         }}
-
                       >
                         <tech.icon
                           className="text-white text-2xl transition-all duration-300 hover:text-indigo-400"
+                          title={tech.name}
                         />
-                      </motion.div>
+                      </div>
                     );
                   })}
                 </motion.div>

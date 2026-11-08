@@ -12,6 +12,7 @@ interface Certification {
   issuer: string;
   date: string;
   image: string;
+  credentialUrl?: string;
   description?: string;
 }
 
@@ -50,21 +51,21 @@ const certifications: Record<Category, Certification[]> = {
   Professional: [
     {
       id: 1,
-      title: "Mastering Python libraries for Data Science",
+      title: "Mastering Python Libraries for Data Science",
       issuer: "Udemy",
       date: "2024",
       image: "/cert.webp",
     },
     {
       id: 2,
-      title: "Machine Learning fundamentals",
+      title: "Machine Learning Fundamentals",
       issuer: "Coursera",
       date: "2024",
       image: "/cert.webp",
     },
     {
       id: 3,
-      title: "AWS cloud computing",
+      title: "AWS Cloud Computing",
       issuer: "FreeCodeCamp",
       date: "2025",
       image: "/cert.webp",
@@ -163,11 +164,11 @@ function TimelineCard({ cert, isLeft }: TimelineCardProps) {
           <div className="w-32 h-20 rounded-md overflow-hidden flex-shrink-0">
             <Image
               src={cert.image}
-              alt={cert.issuer}
+              alt={`${cert.title} certificate`}
               width={40}
               height={40}
-              className="w-full h-full object-cover cursor-pointer hover:scale-105 transition-transform duration-300"
-              onClick={() => window.open(cert.image, "_blank")}
+              className={`w-full h-full object-cover transition-transform duration-300 ${cert.credentialUrl ? "cursor-pointer hover:scale-105" : ""}`}
+              onClick={cert.credentialUrl ? () => window.open(cert.credentialUrl, "_blank") : undefined}
             />
           </div>
         </div>

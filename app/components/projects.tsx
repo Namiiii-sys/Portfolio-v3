@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useRef } from "react";
-import { FiExternalLink } from "react-icons/fi";
+import { FiExternalLink, FiGithub } from "react-icons/fi";
 import { motion, useScroll, useTransform, MotionValue } from "framer-motion";
 import { FEATURED_PROJECTS } from "./featuredData";
 import SectionHeading from "./SectionHeading";
@@ -13,6 +13,8 @@ type Project = {
   poster?: string;
   desc: string;
   techStack: string[];
+  github?: string;
+  liveLink?: string | null;
 };
 
 const ProjectCard: React.FC<{
@@ -84,12 +86,26 @@ const ProjectCard: React.FC<{
         </p>
 
         <div className="flex gap-3 mb-2 z-20 relative">
-          <button className="px-6 py-2.5 flex items-center gap-2 rounded-full border border-white/20 text-white hover:bg-white hover:text-black transition-all duration-300 font-medium text-sm">
-            Code <FiExternalLink />
-          </button>
-          <button className="px-6 py-2.5 flex items-center gap-2 rounded-full bg-white text-black hover:bg-gray-200 transition-all duration-300 font-medium shadow-lg hover:shadow-white/20 text-sm">
-            Live Demo <FiExternalLink />
-          </button>
+          {project.github ? (
+            <a
+              href={project.github}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="px-6 py-2.5 flex items-center gap-2 rounded-full border border-white/20 text-white hover:bg-white hover:text-black transition-all duration-300 font-medium text-sm"
+            >
+              Code <FiGithub />
+            </a>
+          ) : null}
+          {project.liveLink ? (
+            <a
+              href={project.liveLink}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="px-6 py-2.5 flex items-center gap-2 rounded-full bg-white text-black hover:bg-gray-200 transition-all duration-300 font-medium shadow-lg hover:shadow-white/20 text-sm"
+            >
+              Live Demo <FiExternalLink />
+            </a>
+          ) : null}
         </div>
       </article>
     </motion.section>
