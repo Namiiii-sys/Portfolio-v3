@@ -103,7 +103,7 @@ const Socials = () => {
                             <SocialButton
                                 icon={<SiGeeksforgeeks />}
                                 label="GFG"
-                                href="https://auth.geeksforgeeks.org/user/namita_mh/"
+                                href="https://www.geeksforgeeks.org/user/namita_mh/"
                                 color="text-green-400"
                             />
                         </div>
@@ -119,6 +119,7 @@ const SocialButton = ({ icon, label, href, color }: { icon: React.ReactNode, lab
         href={href}
         target="_blank"
         rel="noopener noreferrer"
+        aria-label={label}
         className="group flex flex-col items-center justify-center p-2.5 rounded-xl bg-white/5 border border-white/5 hover:bg-white/10 hover:border-white/10 transition-all duration-300"
     >
         <div className={`text-lg mb-1.5 ${color} opacity-80 group-hover:scale-110 transition-transform`}>

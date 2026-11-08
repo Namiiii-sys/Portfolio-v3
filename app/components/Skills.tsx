@@ -19,8 +19,8 @@ const skillCategories: Record<Category, { name: string; icon: any; color: string
     ],
     Backend: [
         { name: "Node.js", icon: FaNodeJs, color: "#339933" },
-        { name: "Django", icon: SiDjango, color: "#092E20" },
-        { name: "FastAPI", icon: SiFastapi, color: "#35af96ff" },
+        { name: "Django", icon: SiDjango, color: "#44B78B" },
+        { name: "FastAPI", icon: SiFastapi, color: "#009688" },
         { name: "C++", icon: SiCplusplus, color: "#00599C" },
         { name: "MongoDB", icon: SiMongodb, color: "#47A248" },
         { name: "PostgreSQL", icon: SiPostgresql, color: "#4169E1" },
@@ -35,7 +35,7 @@ const skillCategories: Record<Category, { name: string; icon: any; color: string
     Tools: [
         { name: "Git", icon: FaGitAlt, color: "#F05032" },
         { name: "Docker", icon: FaDocker, color: "#2496ED" },
-        { name: "Vercel", icon: SiVercel, color: "#000000" },
+        { name: "Vercel", icon: SiVercel, color: "#ffffff" },
         { name: "Postman", icon: SiPostman, color: "#FF6C37" },
     ],
 };

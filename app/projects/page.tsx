@@ -61,6 +61,19 @@ const ProjectsPage = () => {
                 setProducts(mergedProducts);
             } catch (error) {
                 console.error("Error fetching repos:", error);
+                const fallbackProducts = CURATED_PROJECTS.map((config) => {
+                    const primaryLink = config.LiveLink
+                        ? (config.LiveLink.startsWith('http') ? config.LiveLink : `https://${config.LiveLink}`)
+                        : `https://github.com/Namiiii-sys/${config.repoName}`;
+                    return {
+                        title: config.repoName,
+                        thumbnail: config.thumbnail,
+                        link: primaryLink,
+                        description: "Full-stack project by Namita Mehra.",
+                        language: "Code",
+                    };
+                });
+                setProducts(fallbackProducts);
             } finally {
                 setLoading(false);
             }
@@ -144,7 +157,7 @@ const ProductCard = ({ product, translate }: { product: Product; translate: { x:
         whileHover={{ y: -20 }}
         className="group/product h-96 w-[30rem] relative flex-shrink-0"
     >
-        <Link href={product.link} target="_blank" className="block group-hover/product:shadow-2xl">
+        <Link href={product.link} target="_blank" rel="noopener noreferrer" className="block group-hover/product:shadow-2xl">
             <div className="absolute inset-0 h-full w-full bg-black pointer-events-none opacity-0 group-hover/product:opacity-50 transition-opacity z-10" />
             <div className="object-cover object-left-top absolute h-full w-full inset-0 bg-gray-900 rounded-xl overflow-hidden border border-white/10">
                 <Image
