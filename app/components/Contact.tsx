@@ -36,11 +36,13 @@ const Contact = () => {
         setFormData({ name: '', email: '', message: '' });
         setTimeout(() => setStatus('idle'), 3000);
       } else {
+        const errorData = await response.json().catch(() => null);
+        console.error('Contact error response:', errorData?.message || response.statusText);
         setStatus('error');
         setTimeout(() => setStatus('idle'), 3000);
       }
     } catch (error) {
-      console.error('Error:', error);
+      console.error('Contact error:', error);
       setStatus('error');
       setTimeout(() => setStatus('idle'), 3000);
     }

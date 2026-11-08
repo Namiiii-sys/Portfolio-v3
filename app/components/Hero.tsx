@@ -9,9 +9,7 @@ gsap.registerPlugin(ScrollTrigger);
 const Hero = () => {
   const containerRef = useRef<HTMLDivElement>(null);
 
-  // Refs for all layers
-  const starsRef = useRef<HTMLDivElement>(null);
-  const fogRef = useRef<HTMLDivElement>(null);
+  // Refs for animated layers
   const planetRef = useRef<HTMLDivElement>(null);
   const mountainFarRef = useRef<HTMLDivElement>(null);
   const mountainMidRef = useRef<HTMLDivElement>(null);
@@ -20,6 +18,8 @@ const Hero = () => {
   const nameTextRef = useRef<HTMLHeadingElement>(null);
 
   useGSAP(() => {
+    if (!containerRef.current) return;
+
     const tl = gsap.timeline({
       scrollTrigger: {
         trigger: containerRef.current,
@@ -29,29 +29,23 @@ const Hero = () => {
       },
     });
 
-    // Stars
-    tl.to(starsRef.current, { yPercent: 10, ease: "none" }, 0);
-
     // Planet
-    tl.to(planetRef.current, { yPercent: 25, ease: "none" }, 0);
+    if (planetRef.current) tl.to(planetRef.current, { yPercent: 25, ease: "none" }, 0);
 
     // Far Ridge
-    tl.to(mountainFarRef.current, { yPercent: 40, ease: "none" }, 0);
+    if (mountainFarRef.current) tl.to(mountainFarRef.current, { yPercent: 40, ease: "none" }, 0);
 
     // Intro Text
-    tl.to(introTextRef.current, { yPercent: 60, opacity: 0, ease: "power1.in" }, 0);
+    if (introTextRef.current) tl.to(introTextRef.current, { yPercent: 60, opacity: 0, ease: "power1.in" }, 0);
 
     // Mid Ridge
-    tl.to(mountainMidRef.current, { yPercent: 70, ease: "none" }, 0);
+    if (mountainMidRef.current) tl.to(mountainMidRef.current, { yPercent: 70, ease: "none" }, 0);
 
     // Name Text
-    tl.to(nameTextRef.current, { yPercent: 90, scale: 1.1, opacity: 0, ease: "power1.in" }, 0);
+    if (nameTextRef.current) tl.to(nameTextRef.current, { yPercent: 90, scale: 1.1, opacity: 0, ease: "power1.in" }, 0);
 
     // Front Ridge
-    tl.to(mountainCloseRef.current, { yPercent: 120, ease: "none" }, 0);
-
-    // Fog
-    tl.to(fogRef.current, { yPercent: -30, opacity: 0, ease: "none" }, 0);
+    if (mountainCloseRef.current) tl.to(mountainCloseRef.current, { yPercent: 120, ease: "none" }, 0);
 
   }, { scope: containerRef });
 
@@ -134,7 +128,7 @@ const Hero = () => {
         }}
       />
 
-      <div className="absolute inset-0 z-60 pointer-events-none opacity-20 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] mix-blend-overlay" />
+      <div className="absolute inset-0 z-60 pointer-events-none opacity-20 bg-[url('/noise.svg')] mix-blend-overlay" />
 
 
 

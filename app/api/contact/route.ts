@@ -24,7 +24,10 @@ export async function POST(req: Request) {
             );
         }
 
-        if (!process.env.EMAIL_USER || !process.env.EMAIL_PASS) {
+        const emailUser = process.env.EMAIL_USER?.trim().replace(/['"]/g, '');
+        const emailPass = process.env.EMAIL_PASS?.trim().replace(/['"]/g, '').replace(/\s+/g, '');
+
+        if (!emailUser || !emailPass) {
             console.error('Contact error: EMAIL_USER or EMAIL_PASS environment variables are not set.');
             return NextResponse.json(
                 { message: 'Contact service is temporarily unconfigured' },
@@ -35,13 +38,13 @@ export async function POST(req: Request) {
         const transporter = nodemailer.createTransport({
             service: 'gmail',
             auth: {
-                user: process.env.EMAIL_USER?.trim(),
-                pass: process.env.EMAIL_PASS?.replace(/\s+/g, ''),
+                user: emailUser,
+                pass: emailPass,
             },
         });
 
         const mailOptions = {
-            from: process.env.EMAIL_USER,
+            from: emailUser,
             to: 'namitamehra000@gmail.com',
             replyTo: trimmedEmail,
             subject: `Portfolio Contact: Message from ${trimmedName}`,
@@ -67,10 +70,10 @@ export async function POST(req: Request) {
             { message: 'Email sent successfully' },
             { status: 200 }
         );
-    } catch (error) {
+    } catch (error: any) {
         console.error('Error sending email:', error);
         return NextResponse.json(
-            { message: 'Failed to send email' },
+            { message: error?.message || 'Failed to send email' },
             { status: 500 }
         );
     }

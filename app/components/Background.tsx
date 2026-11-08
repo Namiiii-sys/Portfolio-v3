@@ -5,7 +5,7 @@ const Background = () => {
         <div className="fixed inset-0 z-[-1] bg-[#02000a]">
             {/* Deep Space & Stars */}
             <div className="absolute inset-0 bg-gradient-to-b from-[#05030a] via-[#0f0c29] to-[#02000a]">
-                <div className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] bg-repeat opacity-20 mixed-blend-overlay" />
+                <div className="absolute inset-0 bg-[url('/noise.svg')] bg-repeat opacity-20 mixed-blend-overlay" />
                 <div
                     className="absolute inset-0 opacity-80"
                     style={{
